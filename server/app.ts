@@ -2,7 +2,7 @@ import * as express from "express";
 import * as path from "path";
 
 const app = express();
-const basePath = path.join(process.cwd(), "..");
+const basePath = path.join(__dirname, "..");
 const port = 8001;
 
 console.log("Running 2 express server");
