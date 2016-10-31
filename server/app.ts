@@ -5,7 +5,7 @@ const app = express();
 const basePath = path.join(__dirname, "..");
 const port = 8001;
 
-console.log("Running 2 express server");
+console.log("Running 4 express server");
 console.log("    basePath: " + basePath);
 console.log("    port: " + port);
 
