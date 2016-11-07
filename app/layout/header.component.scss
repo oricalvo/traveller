@@ -3,10 +3,10 @@
   flex-direction: row;
   background-color: black;
   padding: 0.5em;
+  color: white;
 }
 
 .title {
-  color: white;
   font-size: 2em;
   display: flex;
   margin-right: 1em;
@@ -16,6 +16,7 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  width: 100%;
 
   li {
     display: inline-block;

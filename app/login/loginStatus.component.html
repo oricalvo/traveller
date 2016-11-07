@@ -1,0 +1,9 @@
+<div *ngIf="isLoggedIn" class="status-logged-in">
+    <span class="user-name">{{userName}}</span>
+    <a href="#" (click)="logout()">Logout</a>
+</div>
+
+<div *ngIf="!isLoggedIn" class="status-logged-out">
+    <a href="#" (click)="login()">Login</a>
+</div>
+

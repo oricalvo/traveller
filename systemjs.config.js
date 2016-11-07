@@ -23,8 +23,10 @@
             'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
             "text": "npm:systemjs-plugin-text/text.js",
             "css": "npm:systemjs-plugin-css/css.js",
+            "json": "npm:systemjs-plugin-json/json.js",
             "reflect-metadata": "npm:reflect-metadata/Reflect.js",
             "zone.js": "npm:zone.js/dist/zone.js",
+            "redux": "npm:redux/dist/redux.js"
         },
 
         packages: {
@@ -44,6 +46,10 @@
             "*.css": {
                 loader: "text",
             },
+            "*.json": {
+                loader: "json",
+            },
         }
     });
 })(this);
+
