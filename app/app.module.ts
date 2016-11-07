@@ -11,8 +11,6 @@ import { MainComp } from './components/main.component';
 import { FootComp } from './components/footer.component';
 
 
-
-
 @NgModule({
     imports:      [ BrowserModule ],
     declarations: [ AppComponent,HeadComp,NavComp,MainComp,FootComp],
