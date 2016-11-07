@@ -5,14 +5,11 @@
 (function (global) {
     System.config({
         paths: {
-            // paths serve as alias
             'npm:': 'node_modules/'
         },
-        // map tells the System loader where to look for things
+
         map: {
-            // our app is within the app folder
             app: 'app',
-            // angular bundles
             '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
             '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
             '@angular/compiler': 'npm:@angular/compiler/bundles/compiler.umd.js',
@@ -22,11 +19,14 @@
             '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
             '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
             '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
-            'rxjs':                      'npm:rxjs',
+            'rxjs': 'npm:rxjs',
             'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
             "text": "npm:systemjs-plugin-text/text.js",
+            "css": "npm:systemjs-plugin-css/css.js",
+            "reflect-metadata": "npm:reflect-metadata/Reflect.js",
+            "zone.js": "npm:zone.js/dist/zone.js",
         },
-        // packages tells the System loader how to load when no filename and/or no extension
+
         packages: {
             app: {
                 main: './main.js',
@@ -35,6 +35,15 @@
             rxjs: {
                 defaultExtension: 'js'
             }
+        },
+
+        meta: {
+            "*.html": {
+                loader: "text",
+            },
+            "*.css": {
+                loader: "text",
+            },
         }
     });
 })(this);
