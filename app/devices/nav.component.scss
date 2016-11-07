@@ -1,5 +1,6 @@
 :host {
   display: flex;
+  width: 10em;
 }
 
 ul {
@@ -9,5 +10,6 @@ ul {
 
   li {
     padding: 0.5em 0;
+    display: block;
   }
 }
