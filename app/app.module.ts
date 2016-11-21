@@ -16,9 +16,16 @@ import {routes} from "./routes";
 import {DevicesHomeComponent} from "./devices/home.component";
 import {DevicesNavComponent} from "./devices/nav.component";
 import {NullComponent} from "./components/null.component";
+import {DevicesListComponent} from "./devices/devicesList.component";
+import {DevicesService} from "./services/devices.service";
+import {DevicesWebApiMock} from "./mocks/devices.webapi.mock";
+import {GridComponent} from "./grid/grid.component";
+import {AdminComponent} from "./admin/admin.component";
+import {EditDeviceComponent} from "./devices/editDevice.component";
 
 const webApiMocks = [
-    { provide: "loginWebApi", useClass: LoginWebApiMock }
+    { provide: "loginWebApi", useClass: LoginWebApiMock },
+    { provide: "devicesWebApi", useClass: DevicesWebApiMock }
 ];
 
 @NgModule({
@@ -34,11 +41,16 @@ const webApiMocks = [
         LoginStatusComponent,
         DevicesHomeComponent,
         DevicesNavComponent,
+        DevicesListComponent,
         NullComponent,
+        GridComponent,
+        AdminComponent,
+        EditDeviceComponent,
     ],
     providers: [
         AppStore,
         AuthService,
+        DevicesService,
         ...webApiMocks,
     ],
     bootstrap: [AppComponent]

@@ -38,7 +38,7 @@ function compileSASS() {
         .get();
 }
 
-function runWebServer(isProduction) {
+function runWebServer() {
     helpers.shellExec("node node_modules/nodemon/bin/nodemon.js server/app.js", {
         openNewCommandWindow: true
     });
@@ -54,4 +54,5 @@ function runBrowser() {
 
 module.exports = {
     dev: dev,
+    server: runWebServer
 };

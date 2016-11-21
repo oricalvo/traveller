@@ -1,6 +1,8 @@
 import "reflect-metadata";
 import "zone.js";
 import { Component } from '@angular/core';
+require("node_modules/bootstrap/dist/css/bootstrap.css!css");
+require("node_modules/bootstrap/dist/css/bootstrap-theme.css!css");
 
 @Component({
     selector: 'my-app',

@@ -1,0 +1,25 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th (click)="toggleColumn(column)" *ngFor="let column of columns">
+                {{column.title}}
+                <span *ngIf="column == sortedColumn && sortOrder == 'asc'">&uarr;</span>
+                <span *ngIf="column == sortedColumn && sortOrder == 'desc'">&darr;</span>
+            </th>
+
+            <th *ngIf="hasActionsColumn">
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let row of sortedRows">
+            <td *ngFor="let column of columns">{{row[column.field]}}</td>
+
+            <td class="actions" *ngIf="hasActionsColumn">
+                <a (click)="onEdit(row)">Edit</a>
+                <a (click)="onDelete(row)">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

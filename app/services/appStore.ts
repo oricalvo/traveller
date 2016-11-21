@@ -1,7 +1,9 @@
 import {createStore, Store, Unsubscribe, Action} from "redux";
-import {root} from "../reducers/root";
 import {AppState} from "../reducers/AppState";
-import {Injectable} from "@angular/core";
+import {DeviceSortBy} from "../reducers/AppState";
+import {combineReducers} from "redux";
+import {reducer as userReduce} from "../reducers/user";
+import {reducer as devicesReduce, initialState as devicesInitialState} from "../reducers/devices";
 
 export class AppStore {
     store: Store<AppState>;
@@ -12,8 +14,14 @@ export class AppStore {
                 userName: null,
                 role: null,
                 logging: false,
-            }
+            },
+            devices: devicesInitialState
         };
+
+        const root = combineReducers<AppState>({
+            user: userReduce,
+            devices:devicesReduce
+        });
 
         this.store = createStore(root, initialState);
     }

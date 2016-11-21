@@ -26,7 +26,8 @@
             "json": "npm:systemjs-plugin-json/json.js",
             "reflect-metadata": "npm:reflect-metadata/Reflect.js",
             "zone.js": "npm:zone.js/dist/zone.js",
-            "redux": "npm:redux/dist/redux.js"
+            "redux": "npm:redux/dist/redux.js",
+            "lodash": "npm:lodash/lodash.js"
         },
 
         packages: {

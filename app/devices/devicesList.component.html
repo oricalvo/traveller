@@ -1,0 +1,8 @@
+<marvell-grid
+        [columns]="columns"
+        [rows]="devices"
+        [showDeleteButton]="true"
+        [showEditButton]="true"
+        (deletingRow)="onDeletingRow($event)"
+        (editingRow)="onEditingRow($event)">
+</marvell-grid>

@@ -1,9 +1,11 @@
 :host {
   display: flex;
   flex-direction: row;
-  background-color: black;
+  background-color: coral;
   padding: 0.5em;
   color: white;
+  justify-content: center;
+  align-items: center;
 }
 
 .title {
@@ -20,5 +22,10 @@ ul {
 
   li {
     display: inline-block;
+    margin-right: 1em;
   }
+}
+
+a {
+  color: white;
 }
