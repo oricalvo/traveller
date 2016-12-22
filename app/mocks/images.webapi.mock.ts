@@ -24,8 +24,4 @@ export class ImagesWebApiMock implements IImagesWebApi {
             return image;
         });
     }
-
-    deleteImage(id:number):Promise<void> {
-        return Promise.resolve();
-    }
 }

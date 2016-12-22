@@ -1,8 +1,9 @@
+import {ImagesHomeComponent} from "./images/home.component";
+import {ImagesListComponent} from "./images/imagesList.component";
+import {EditImageComponent} from "./images/editImage.component";
+
 import {DevicesHomeComponent} from "./devices/home.component";
-import {AppComponent} from "./layout/app.component";
-import {NullComponent} from "./components/null.component";
 import {DevicesListComponent} from "./devices/devicesList.component";
-import {AdminComponent} from "./admin/admin.component";
 import {EditDeviceComponent} from "./devices/editDevice.component";
 
 import {DebugDatasHomeComponent} from "./Debugdatas/home.component";
@@ -13,10 +14,12 @@ import {StressTestHomeComponent} from "./StressTests/home.component";
 import {StressTestsListComponent} from "./StressTests/StressTestsList.component";
 import {EditStressTestComponent} from "./StressTests/editStressTest.component";
 
-import {ImagesHomeComponent} from "./images/home.component";
-import {ImagesListComponent} from "./images/imagesList.component";
-import {EditImageComponent} from "./images/editImage.component";
-import {ShowImageComponent} from "./images/showImage.component";
+
+
+import {AppComponent} from "./layout/app.component";
+import {NullComponent} from "./components/null.component";
+import {AdminComponent} from "./admin/admin.component";
+
 
 export const routes = [
     { path: '', component: NullComponent },
@@ -34,7 +37,6 @@ export const routes = [
         children: [
             { path: '', component: ImagesListComponent },
             { path: 'edit/:id', component: EditImageComponent },
-            { path: 'show/:id', component: ShowImageComponent },
         ]
     },
     {

@@ -33,22 +33,19 @@ export interface Image{
 export interface ImagesState{
     readonly data: Image[]
 }
-
 export enum ImageSortBy {
     path
 }
 
+
 export interface DebugData{
     readonly id: number;
     readonly desc: string;
-    readonly images: Image[];
 }
 
 export interface DebugDataState{
-    readonly data: DebugData[];
-    readonly selected: DebugData;
+    readonly data: DebugData[]
 }
-
 export enum DebugDataSortBy {
     desc
 }
@@ -83,7 +80,6 @@ export interface StressTest{
 export interface StressTestState{
     readonly data: StressTest[]
 }
-
 export enum StressTestSortBy {
     id,qtyIn,stressDuration,stressCycleIn,stressDateIn,stressDateOut,stressReject,stressQtyOut,testQtyIn,testDuration,testDateIn,testDateOut,testRejects,testQtyOut,clips,reballingNumber,faNumber,box,zone,faDiscription,updatedByPersonId,comments,updateDate
 
@@ -93,6 +89,7 @@ export interface AppState {
     readonly user: UserState;
     readonly devices: DevicesState;
     readonly images:ImagesState;
-    readonly debugData:DebugDataState;
+    readonly debugdatas:DebugDataState;
     readonly stresstests:StressTestState;
+
 }

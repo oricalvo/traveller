@@ -14,18 +14,7 @@ export class debugdatasWebApiMock implements IDebugDataWebApi {
         });
     }
 
-    getDebugData(id: number): Promise<DebugData> {
-        return Promise.resolve().then(() => {
-            const DebugData = debugdatas.find(d => d.id == id);
-            if (!DebugData) {
-                throw new Error("Invalid debugdata desc");
-            }
-
-            return DebugData;
-        });
-    }
-
-    getDebugDataByDesc(desc: string): Promise<DebugData> {
+    getDebugData(desc: string): Promise<DebugData> {
         return Promise.resolve().then(() => {
             const DebugData = debugdatas.find(d => d.desc == desc);
             if (!DebugData) {

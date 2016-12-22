@@ -1,15 +1,16 @@
 import {createStore, Store, Unsubscribe, Action} from "redux";
 import {AppState} from "../reducers/AppState";
-import {DeviceSortBy} from "../reducers/AppState";
 import {combineReducers} from "redux";
 import {reducer as userReduce} from "../reducers/user";
+
 import {reducer as devicesReduce, initialState as devicesInitialState} from "../reducers/devices";
+import {DeviceSortBy} from "../reducers/AppState";
+
 import {reducer as imagesReduce, initialState as imagesInitialState} from "../reducers/images";
 
-import {reducer as DebugDataReducer, initialState as DebugDatasInitialState} from "../reducers/debugdatas";
+import {reducer as DebugDatasReduce, initialState as DebugDatasInitialState} from "../reducers/debugdatas";
 
 import {reducer as StressTestsReduce, initialState as StressTestsInitialState} from "../reducers/stresstests";
-
 
 export class AppStore {
     store: Store<AppState>;
@@ -23,15 +24,17 @@ export class AppStore {
             },
             devices: devicesInitialState,
             images:imagesInitialState,
-            debugData:DebugDatasInitialState,
+            debugdatas:DebugDatasInitialState,
             stresstests:StressTestsInitialState
+
+
         };
 
         const root = combineReducers<AppState>({
             user: userReduce,
             devices:devicesReduce,
             images:imagesReduce,
-            debugData:DebugDataReducer,
+            debugdatas:DebugDatasReduce,
             stresstests:StressTestsReduce
         });
 

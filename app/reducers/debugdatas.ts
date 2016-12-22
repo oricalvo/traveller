@@ -6,16 +6,19 @@ import Action = Redux.Action;
 import {Http, Response} from "@angular/http";
 import {DebugDataState, DebugData} from "./AppState";
 import {DebugDataSortBy} from "./AppState";
-import {imageActionTypes} from "./images";
 
 export const debugdataActionTypes= {
     LOAD_DEBUGDATAS: "LOAD_DEBUGDATAS",
-    SELECT_DEBUGDATA: "SELECT_DEBUGDATA",
+
 };
 
-export const initialState: DebugDataState = {
+export const initialState = {
     data: null,
-    selected: null,
+    // sortBy: DeviceSortBy.name,
+    // isAscending: true,
+    // isLoading: true,
+    // displayedItems: null,
+    // currentDeviceId: null
 };
 
 export const actions = {
@@ -26,33 +29,10 @@ export const actions = {
         }
     },
 
-    selectDebugData: function(debugData: DebugData) {
-        return {
-            type: debugdataActionTypes.SELECT_DEBUGDATA,
-            debugData: debugData,
-        }
-    },
 };
-
-export function reducer(state: DebugDataState = initialState, action: any): DebugDataState {
+export function reducer(state: any = initialState, action: any): DebugDataState {
     if(action.type == debugdataActionTypes.LOAD_DEBUGDATAS) {
         return Object.assign({}, state, {data: action.debugdatas});
-    }
-    else if(action.type == debugdataActionTypes.SELECT_DEBUGDATA) {
-        return Object.assign({}, state, {selected: action.debugData});
-    }
-    else if(action.type == imageActionTypes.DELETE_IMAGE) {
-        const debugData = state.selected;
-        if(debugData) {
-            const index = debugData.images.findIndex(i => i.id == action.id);
-            if (index != -1) {
-                const imagesClone = debugData.images.concat([]);
-                imagesClone.splice(index, 1);
-                const debugDataClone = Object.assign({}, debugData, {images: imagesClone});
-
-                return Object.assign({}, state, {selected: debugData});
-            }
-        }
     }
 
     return state;

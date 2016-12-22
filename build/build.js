@@ -13,8 +13,8 @@ function dev() {
         .then(restorePackages)
         .then(compileTS)
         .then(compileSASS)
-        .then(() => runWebServer(false))
-        .then(() => helpers.delay(1000))
+        .then(runWebServer(false))
+        .then(helpers.delay(1000))
         .then(runBrowser);
 }
 
