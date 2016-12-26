@@ -18,4 +18,10 @@ export class DebugDatasService {
             this.appStore.dispatch(actions.loadDebugDatas(debugdatas));
         });
     }
+
+    select(id: number) {
+        this.debugdatasWebApi.getDebugData(id).then(debugData => {
+            this.appStore.dispatch(actions.selectDebugData(debugData));
+        });
+    }
 }

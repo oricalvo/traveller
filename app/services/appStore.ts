@@ -6,7 +6,7 @@ import {reducer as userReduce} from "../reducers/user";
 import {reducer as devicesReduce, initialState as devicesInitialState} from "../reducers/devices";
 import {reducer as imagesReduce, initialState as imagesInitialState} from "../reducers/images";
 
-import {reducer as DebugDatasReduce, initialState as DebugDatasInitialState} from "../reducers/debugdatas";
+import {reducer as DebugDataReducer, initialState as DebugDatasInitialState} from "../reducers/debugdatas";
 
 import {reducer as StressTestsReduce, initialState as StressTestsInitialState} from "../reducers/stresstests";
 
@@ -23,7 +23,7 @@ export class AppStore {
             },
             devices: devicesInitialState,
             images:imagesInitialState,
-            debugdatas:DebugDatasInitialState,
+            debugData:DebugDatasInitialState,
             stresstests:StressTestsInitialState
         };
 
@@ -31,7 +31,7 @@ export class AppStore {
             user: userReduce,
             devices:devicesReduce,
             images:imagesReduce,
-            debugdatas:DebugDatasReduce,
+            debugData:DebugDataReducer,
             stresstests:StressTestsReduce
         });
 

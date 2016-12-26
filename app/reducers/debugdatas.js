@@ -6,9 +6,11 @@ var _ = require("lodash");
 var AppState_1 = require("./AppState");
 exports.debugdataActionTypes = {
     LOAD_DEBUGDATAS: "LOAD_DEBUGDATAS",
+    SELECT_DEBUGDATA: "SELECT_DEBUGDATA",
 };
 exports.initialState = {
     data: null,
+    selected: null,
 };
 exports.actions = {
     loadDebugDatas: function (debugdatas) {
@@ -17,11 +19,20 @@ exports.actions = {
             debugdatas: debugdatas,
         };
     },
+    selectDebugData: function (debugData) {
+        return {
+            type: exports.debugdataActionTypes.SELECT_DEBUGDATA,
+            debugData: debugData,
+        };
+    },
 };
 function reducer(state, action) {
     if (state === void 0) { state = exports.initialState; }
     if (action.type == exports.debugdataActionTypes.LOAD_DEBUGDATAS) {
-        return Object.assign({}, state, { data: action.debugdatas });
+        return Object.assign({}, state, { data: action.debugData });
+    }
+    else if (action.type == exports.debugdataActionTypes.SELECT_DEBUGDATA) {
+        return Object.assign({}, state, { selected: action.debugData });
     }
     return state;
 }

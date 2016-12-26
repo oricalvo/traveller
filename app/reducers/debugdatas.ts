@@ -9,16 +9,12 @@ import {DebugDataSortBy} from "./AppState";
 
 export const debugdataActionTypes= {
     LOAD_DEBUGDATAS: "LOAD_DEBUGDATAS",
-
+    SELECT_DEBUGDATA: "SELECT_DEBUGDATA",
 };
 
-export const initialState = {
+export const initialState: DebugDataState = {
     data: null,
-    // sortBy: DeviceSortBy.name,
-    // isAscending: true,
-    // isLoading: true,
-    // displayedItems: null,
-    // currentDeviceId: null
+    selected: null,
 };
 
 export const actions = {
@@ -29,10 +25,20 @@ export const actions = {
         }
     },
 
+    selectDebugData: function(debugData: DebugData) {
+        return {
+            type: debugdataActionTypes.SELECT_DEBUGDATA,
+            debugData: debugData,
+        }
+    },
 };
-export function reducer(state: any = initialState, action: any): DebugDataState {
+
+export function reducer(state: DebugDataState = initialState, action: any): DebugDataState {
     if(action.type == debugdataActionTypes.LOAD_DEBUGDATAS) {
-        return Object.assign({}, state, {data: action.debugdatas});
+        return Object.assign({}, state, {data: action.debugData});
+    }
+    else if(action.type == debugdataActionTypes.SELECT_DEBUGDATA) {
+        return Object.assign({}, state, {selected: action.debugData});
     }
 
     return state;

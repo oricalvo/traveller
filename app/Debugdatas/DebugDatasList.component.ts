@@ -32,7 +32,7 @@ export class DebugDatasListComponent {
     //we don't load heavy data in constructor we use Init function for heavy data loading
      ngOnInit(){
               this.appStore.subscribe(()=>{
-              this.debugdatas = this.appStore.state.debugdatas.data;
+              this.debugdatas = this.appStore.state.debugData.data;
        });
 
          this.DebugDatasService.loadAll();
@@ -41,7 +41,7 @@ export class DebugDatasListComponent {
     onEditingRow(row){
         console.log("Edit", row);
 
-        this.router.navigate(["/debugdatas/edit", row.id]);
+        this.router.navigate(["/debugData/edit", row.id]);
     }
 
     onDeletingRow(row){

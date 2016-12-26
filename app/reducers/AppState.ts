@@ -24,26 +24,35 @@ export interface DevicesState {
     // readonly displayedItems: Object[],
     // readonly currentDeviceId: number
 }
+
 export interface Image{
     readonly id: number;
     readonly path: string;
 }
+
 export interface ImagesState{
     readonly data: Image[]
 }
+
 export enum ImageSortBy {
     path
 }
+
 export interface DebugData{
     readonly id: number;
     readonly desc: string;
+    readonly images: Image[];
 }
+
 export interface DebugDataState{
-    readonly data: DebugData[]
+    readonly data: DebugData[];
+    readonly selected: DebugData;
 }
+
 export enum DebugDataSortBy {
     desc
 }
+
 export interface StressTest{
     readonly id:  number;
     readonly qtyIn:  number;
@@ -74,6 +83,7 @@ export interface StressTest{
 export interface StressTestState{
     readonly data: StressTest[]
 }
+
 export enum StressTestSortBy {
     id,qtyIn,stressDuration,stressCycleIn,stressDateIn,stressDateOut,stressReject,stressQtyOut,testQtyIn,testDuration,testDateIn,testDateOut,testRejects,testQtyOut,clips,reballingNumber,faNumber,box,zone,faDiscription,updatedByPersonId,comments,updateDate
 
@@ -83,6 +93,6 @@ export interface AppState {
     readonly user: UserState;
     readonly devices: DevicesState;
     readonly images:ImagesState;
-    readonly debugdatas:DebugDataState;
+    readonly debugData:DebugDataState;
     readonly stresstests:StressTestState;
 }

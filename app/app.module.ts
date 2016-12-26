@@ -64,7 +64,8 @@ const webApis = [
         BrowserModule,
         HttpModule,
         RouterModule.forRoot(routes),
-        MaterialModule.forRoot()
+        MaterialModule.forRoot(),
+        FormsModule,
     ],
     declarations: [
         AppComponent,
