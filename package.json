@@ -35,6 +35,7 @@
     "gulp-intercept": "~0.1.0",
     "gulp-sass": "~2.3.2",
     "intercept": "~0.3.0",
+    "lodash": "^4.17.3",
     "nodemon": "~1.11.0",
     "open": "~0.0.5",
     "redux": "^3.6.0",
