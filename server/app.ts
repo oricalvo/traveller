@@ -1,11 +1,13 @@
 import * as express from "express";
 import * as path from "path";
 import * as fs from "fs";
+import * as request from "request";
 
 const app = express();
 const basePath = path.join(__dirname, "..");
 const port = 8001;
 
+registerPassThrough("/api", "http://localhost:8080/api");
 registerStaticHandler();
 registerNotFound();
 registerAlwaysReturnIndexHtml();
@@ -33,6 +35,25 @@ function registerNotFound(){
         else{
             next();
         }
+    });
+}
+
+function registerPassThrough(baseUrl, externalUrl){
+    app.use(baseUrl + "*", function(req, res){
+        var url = req.originalUrl;
+        console.log("URL: " + url);
+        var tail = url.substring(baseUrl.length);
+        var redirectUrl =  externalUrl + tail;
+
+        console.log("REDIRECTING: " + req.url + " --> " + redirectUrl);
+
+        req.pipe(request(redirectUrl, function(error, response, body) {
+            if(error) {
+                console.error("ERROR: " + error.message);
+
+                res.status(500).send("Redirect to " + externalUrl + " failed with error: " + error.message);
+            }
+        })).pipe(res);
     });
 }
 

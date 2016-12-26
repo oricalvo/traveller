@@ -23,14 +23,41 @@ import {GridComponent} from "./grid/grid.component";
 import {AdminComponent} from "./admin/admin.component";
 import {EditDeviceComponent} from "./devices/editDevice.component";
 
-const webApiMocks = [
+import {ImagesHomeComponent} from "./images/home.component";
+import {ImagesNavComponent} from "./images/nav.component";
+import {ImagesListComponent} from "./images/imagesList.component";
+import {ImagesService} from "./services/images.service";
+import {ImagesWebApiMock} from "./mocks/images.webapi.mock";
+import {EditImageComponent} from "./images/editImage.component";
+
+import {DebugDatasHomeComponent} from "./Debugdatas/home.component";
+import {DebugDatasNavComponent} from "./Debugdatas/nav.component";
+import {DebugDatasListComponent} from "./Debugdatas/DebugDatasList.component";
+import {DebugDatasService} from "./services/DebugDatas.service";
+import {debugdatasWebApiMock} from "./mocks/debugdatas.webapi.mock";
+import {EditDebugDataComponent} from "./Debugdatas/editDebugData.component";
+
+import {StressTestHomeComponent} from "./StressTests/home.component";
+import {StressTestNavComponent} from "./StressTests/nav.component";
+import {StressTestsListComponent} from "./StressTests/StressTestsList.component";
+import {StressTestService} from "./services/StressTests.service";
+import {StressTestsWebApiMock} from "./mocks/stresstests.webapi.mock";
+import {EditStressTestComponent} from "./StressTests/editStressTest.component";
+import {DebugDataWebApi} from "./webApis/debugdatas.webapi";
+
+const webApis = [
     { provide: "loginWebApi", useClass: LoginWebApiMock },
-    { provide: "devicesWebApi", useClass: DevicesWebApiMock }
+    { provide: "devicesWebApi", useClass: DevicesWebApiMock },
+    { provide: "imagesWebApi", useClass: ImagesWebApiMock },
+    //{ provide: "debugdatasWebApi", useClass: debugdatasWebApiMock },
+    { provide: "debugdatasWebApi", useClass: DebugDataWebApi },
+    { provide: "stresstestsWebApi", useClass: StressTestsWebApiMock }
 ];
 
 @NgModule({
     imports: [
         BrowserModule,
+        HttpModule,
         RouterModule.forRoot(routes)
     ],
     declarations: [
@@ -46,12 +73,29 @@ const webApiMocks = [
         GridComponent,
         AdminComponent,
         EditDeviceComponent,
+        ImagesHomeComponent,
+        ImagesNavComponent,
+        ImagesListComponent,
+        EditImageComponent,
+
+        DebugDatasHomeComponent,
+        DebugDatasNavComponent,
+        DebugDatasListComponent,
+        EditDebugDataComponent,
+
+        StressTestHomeComponent,
+        StressTestNavComponent,
+        StressTestsListComponent,
+        EditStressTestComponent
     ],
     providers: [
         AppStore,
         AuthService,
         DevicesService,
-        ...webApiMocks,
+        ImagesService,
+        DebugDatasService,
+        StressTestService,
+        ...webApis,
     ],
     bootstrap: [AppComponent]
 })

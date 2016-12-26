@@ -5,6 +5,18 @@ import {DevicesListComponent} from "./devices/devicesList.component";
 import {AdminComponent} from "./admin/admin.component";
 import {EditDeviceComponent} from "./devices/editDevice.component";
 
+import {DebugDatasHomeComponent} from "./Debugdatas/home.component";
+import {DebugDatasListComponent} from "./Debugdatas/DebugDatasList.component";
+import {EditDebugDataComponent} from "./Debugdatas/editDebugData.component";
+
+import {StressTestHomeComponent} from "./StressTests/home.component";
+import {StressTestsListComponent} from "./StressTests/StressTestsList.component";
+import {EditStressTestComponent} from "./StressTests/editStressTest.component";
+
+import {ImagesHomeComponent} from "./images/home.component";
+import {ImagesListComponent} from "./images/imagesList.component";
+import {EditImageComponent} from "./images/editImage.component";
+
 export const routes = [
     { path: '', component: NullComponent },
     {
@@ -13,6 +25,30 @@ export const routes = [
         children: [
             { path: '', component: DevicesListComponent },
             { path: 'edit/:id', component: EditDeviceComponent },
+        ]
+    },
+    {
+        path: 'images',
+        component: ImagesHomeComponent,
+        children: [
+            { path: '', component: ImagesListComponent },
+            { path: 'edit/:id', component: EditImageComponent },
+        ]
+    },
+    {
+        path: 'debugdatas',
+        component: DebugDatasHomeComponent,
+        children: [
+            { path: '', component: DebugDatasListComponent },
+            { path: 'edit/:id', component: EditDebugDataComponent },
+        ]
+    },
+    {
+        path: 'stresstests',
+        component: StressTestHomeComponent,
+        children: [
+            { path: '', component: StressTestsListComponent },
+            { path: 'edit/:id', component: EditStressTestComponent },
         ]
     },
     {
