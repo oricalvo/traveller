@@ -41,7 +41,7 @@ export class DebugDatasListComponent {
     onEditingRow(row){
         console.log("Edit", row);
 
-        this.router.navigate(["/DebugData/edit", row.id]);
+        this.router.navigate(["/debugdatas/edit", row.id]);
     }
 
     onDeletingRow(row){

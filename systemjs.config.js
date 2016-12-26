@@ -27,7 +27,9 @@
             "reflect-metadata": "npm:reflect-metadata/Reflect.js",
             "zone.js": "npm:zone.js/dist/zone.js",
             "redux": "npm:redux/dist/redux.js",
-            "lodash": "npm:lodash/lodash.js"
+            "lodash": "npm:lodash/lodash.js",
+            '@angular/material': 'npm:@angular/material/bundles/material.umd.js',
+            'hammerjs': 'npm:hammerjs/hammer.js'
         },
 
         packages: {

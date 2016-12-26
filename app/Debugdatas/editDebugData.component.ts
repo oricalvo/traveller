@@ -10,11 +10,9 @@ import {Params, ActivatedRoute, ActivatedRouteSnapshot} from "@angular/router";
     styles: [require("./editDebugData.component.css")],
 })
 export class EditDebugDataComponent {
-    debugdataId: number;
+    id: number;
 
     constructor(route: ActivatedRoute){
-        this.debugdataId =  route.snapshot.params["id"]*1;
-
-        console.log(this.debugdataId);
+        this.id =  route.snapshot.params["id"]*1;
     }
 }

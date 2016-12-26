@@ -1,8 +1,11 @@
+import "reflect-metadata";
+import 'hammerjs';
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
+import {MaterialModule} from '@angular/material';
 
 import {AppComponent}   from './layout/app.component';
 import {HeaderComponent} from './layout/header.component';
@@ -45,20 +48,23 @@ import {StressTestsWebApiMock} from "./mocks/stresstests.webapi.mock";
 import {EditStressTestComponent} from "./StressTests/editStressTest.component";
 import {DebugDataWebApi} from "./webApis/debugdatas.webapi";
 
+require("node_modules/@angular/material/core/theming/prebuilt/indigo-pink.css!css");
+
 const webApis = [
-    { provide: "loginWebApi", useClass: LoginWebApiMock },
-    { provide: "devicesWebApi", useClass: DevicesWebApiMock },
-    { provide: "imagesWebApi", useClass: ImagesWebApiMock },
-    //{ provide: "debugdatasWebApi", useClass: debugdatasWebApiMock },
-    { provide: "debugdatasWebApi", useClass: DebugDataWebApi },
-    { provide: "stresstestsWebApi", useClass: StressTestsWebApiMock }
+    {provide: "loginWebApi", useClass: LoginWebApiMock},
+    {provide: "devicesWebApi", useClass: DevicesWebApiMock},
+    {provide: "imagesWebApi", useClass: ImagesWebApiMock},
+    { provide: "debugdatasWebApi", useClass: debugdatasWebApiMock },
+    //{provide: "debugdatasWebApi", useClass: DebugDataWebApi},
+    {provide: "stresstestsWebApi", useClass: StressTestsWebApiMock}
 ];
 
 @NgModule({
     imports: [
         BrowserModule,
         HttpModule,
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes),
+        MaterialModule.forRoot()
     ],
     declarations: [
         AppComponent,
