@@ -16,6 +16,7 @@ import {EditStressTestComponent} from "./StressTests/editStressTest.component";
 import {ImagesHomeComponent} from "./images/home.component";
 import {ImagesListComponent} from "./images/imagesList.component";
 import {EditImageComponent} from "./images/editImage.component";
+import {ShowImageComponent} from "./images/showImage.component";
 
 export const routes = [
     { path: '', component: NullComponent },
@@ -33,6 +34,7 @@ export const routes = [
         children: [
             { path: '', component: ImagesListComponent },
             { path: 'edit/:id', component: EditImageComponent },
+            { path: 'show/:id', component: ShowImageComponent },
         ]
     },
     {

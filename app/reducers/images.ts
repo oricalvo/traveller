@@ -9,7 +9,7 @@ import {ImageSortBy} from "./AppState";
 
 export const imageActionTypes= {
     LOAD_IMAGES: "LOAD_IMAGES",
-
+    DELETE_IMAGE: "DELETE_IMAGE",
 };
 
 export const initialState = {
@@ -29,10 +29,27 @@ export const actions = {
         }
     },
 
+    deleteImage: function(id: number) {
+        return {
+            type: imageActionTypes.DELETE_IMAGE,
+            id: id,
+        }
+    },
 };
-export function reducer(state: any = initialState, action: any): ImagesState {
+
+export function reducer(state: ImagesState = initialState, action: any): ImagesState {
     if(action.type == imageActionTypes.LOAD_IMAGES) {
         return Object.assign({}, state, {data: action.images});
+    }
+    else if(action.type == imageActionTypes.DELETE_IMAGE) {
+        if(state.data) {
+            const index = state.data.findIndex(i => i.id == action.id);
+            if (index != -1) {
+                const images = state.data.concat([]);
+                images.splice(index, 1);
+                return Object.assign({}, state, {data: images});
+            }
+        }
     }
 
     return state;

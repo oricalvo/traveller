@@ -11,9 +11,11 @@ export class GridComponent {
     @Input() rows: any[];
     @Input() showDeleteButton: boolean;
     @Input() showEditButton: boolean;
+    @Input() showIconButton: boolean;
 
     @Output() editingRow: EventEmitter<any>;
     @Output() deletingRow: EventEmitter<any>;
+    @Output() iconAction: EventEmitter<any>;
 
     sortedRows: any[];
     sortOrder: string;
@@ -22,6 +24,7 @@ export class GridComponent {
     constructor(){
         this.editingRow = new EventEmitter<any>();
         this.deletingRow = new EventEmitter<any>();
+        this.iconAction=new EventEmitter<any>();
         this.sortedColumn = null;
         this.sortOrder = "asc";
     }
@@ -41,6 +44,9 @@ export class GridComponent {
 
     private get hasActionsColumn(){
         return this.showDeleteButton || this.showEditButton;
+    }
+    private get hasIconColumn(){
+        return this.showIconButton;
     }
 
     private toggleColumn(column: GridColumn){
@@ -70,6 +76,9 @@ export class GridComponent {
         this.editingRow.emit(row);
     }
 
+    private onIconPress(row: any){
+        this.iconAction.emit(row);
+    }
     private onDelete(row: any) {
         this.deletingRow.emit(row);
     }

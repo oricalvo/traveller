@@ -6,7 +6,9 @@
                 <span *ngIf="column == sortedColumn && sortOrder == 'asc'">&uarr;</span>
                 <span *ngIf="column == sortedColumn && sortOrder == 'desc'">&darr;</span>
             </th>
-
+            <th *ngIf="hasIconColumn">
+                Preview
+            </th>
             <th *ngIf="hasActionsColumn">
             </th>
         </tr>
@@ -15,11 +17,14 @@
     <tbody>
         <tr *ngFor="let row of sortedRows">
             <td *ngFor="let column of columns">{{row[column.field]}}</td>
-
+            <td class="actions" *ngIf="hasIconColumn">
+                <a (click)="onIconPress(row)"><img src='../../images/preview-icon.png' /></a>
+            </td>
             <td class="actions" *ngIf="hasActionsColumn">
                 <a (click)="onEdit(row)">Edit</a>
                 <a (click)="onDelete(row)">Delete</a>
             </td>
+
         </tr>
     </tbody>
 </table>

@@ -32,6 +32,8 @@ import {ImagesListComponent} from "./images/imagesList.component";
 import {ImagesService} from "./services/images.service";
 import {ImagesWebApiMock} from "./mocks/images.webapi.mock";
 import {EditImageComponent} from "./images/editImage.component";
+import {ShowImageComponent} from "./images/showImage.component";
+
 
 import {DebugDatasHomeComponent} from "./Debugdatas/home.component";
 import {DebugDatasNavComponent} from "./Debugdatas/nav.component";
@@ -43,19 +45,21 @@ import {EditDebugDataComponent} from "./Debugdatas/editDebugData.component";
 import {StressTestHomeComponent} from "./StressTests/home.component";
 import {StressTestNavComponent} from "./StressTests/nav.component";
 import {StressTestsListComponent} from "./StressTests/StressTestsList.component";
-import {StressTestService} from "./services/StressTests.service";
 import {StressTestsWebApiMock} from "./mocks/stresstests.webapi.mock";
 import {EditStressTestComponent} from "./StressTests/editStressTest.component";
 import {DebugDataWebApi} from "./webApis/debugdatas.webapi";
+import {StressTestService} from "./services/stresstests.service";
+import {ImagesWebApi} from "./webApis/images.webapi";
 
 require("node_modules/@angular/material/core/theming/prebuilt/indigo-pink.css!css");
 
 const webApis = [
     {provide: "loginWebApi", useClass: LoginWebApiMock},
     {provide: "devicesWebApi", useClass: DevicesWebApiMock},
-    {provide: "imagesWebApi", useClass: ImagesWebApiMock},
-    { provide: "debugdatasWebApi", useClass: debugdatasWebApiMock },
-    //{provide: "debugdatasWebApi", useClass: DebugDataWebApi},
+   // {provide: "imagesWebApi", useClass: ImagesWebApiMock},
+    {provide: "imagesWebApi", useClass: ImagesWebApi},
+    //{ provide: "debugdatasWebApi", useClass: debugdatasWebApiMock },
+    {provide: "debugdatasWebApi", useClass: DebugDataWebApi},
     {provide: "stresstestsWebApi", useClass: StressTestsWebApiMock}
 ];
 
@@ -84,6 +88,7 @@ const webApis = [
         ImagesNavComponent,
         ImagesListComponent,
         EditImageComponent,
+        ShowImageComponent,
 
         DebugDatasHomeComponent,
         DebugDatasNavComponent,

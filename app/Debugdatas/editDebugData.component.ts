@@ -6,6 +6,7 @@ import {Params, ActivatedRoute, ActivatedRouteSnapshot} from "@angular/router";
 import {DebugData, Image} from "../reducers/AppState";
 import {DebugDatasService} from "../services/DebugDatas.service";
 import {AppStore} from "../services/appStore";
+import {ImagesService} from "../services/images.service";
 
 @Component({
     selector: 'edit-image',
@@ -21,6 +22,7 @@ export class EditDebugDataComponent {
     images: Image[];
 
     constructor(private debugDatasService: DebugDatasService,
+                private imageService: ImagesService,
                 route: ActivatedRoute,
                 appStore: AppStore){
         this.id =  route.snapshot.params["id"]*1;
@@ -48,5 +50,6 @@ export class EditDebugDataComponent {
 
     deleteImage(image, index) {
         this.images.splice(index, 1);
+        this.imageService.deleteImage(image.id);
     }
 }

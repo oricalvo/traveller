@@ -18,4 +18,10 @@ export class ImagesService {
             this.appStore.dispatch(actions.loadImages(images));
         });
     }
+
+    deleteImage(id: number) {
+        this.imagesWebApi.deleteImage(id).then(() => {
+            this.appStore.dispatch(actions.deleteImage(id));
+        });
+    }
 }

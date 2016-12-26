@@ -4,6 +4,7 @@
  */
 var _ = require("lodash");
 var AppState_1 = require("./AppState");
+var images_1 = require("./images");
 exports.debugdataActionTypes = {
     LOAD_DEBUGDATAS: "LOAD_DEBUGDATAS",
     SELECT_DEBUGDATA: "SELECT_DEBUGDATA",
@@ -33,6 +34,18 @@ function reducer(state, action) {
     }
     else if (action.type == exports.debugdataActionTypes.SELECT_DEBUGDATA) {
         return Object.assign({}, state, { selected: action.debugData });
+    }
+    else if (action.type == images_1.imageActionTypes.DELETE_IMAGE) {
+        var debugData = state.selected;
+        if (debugData) {
+            var index = debugData.images.findIndex(function (i) { return i.id == action.id; });
+            if (index != -1) {
+                var imagesClone = debugData.images.concat([]);
+                imagesClone.splice(index, 1);
+                var debugDataClone = Object.assign({}, debugData, { images: imagesClone });
+                return Object.assign({}, state, { selected: debugData });
+            }
+        }
     }
     return state;
 }

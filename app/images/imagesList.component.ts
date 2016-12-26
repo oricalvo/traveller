@@ -26,6 +26,8 @@ export class ImagesListComponent {
         this.columns = [
             {title: "ID", field: "id"},
             {title: "Path", field: "path"},
+
+
         ]
     }
 
@@ -46,5 +48,9 @@ export class ImagesListComponent {
 
     onDeletingRow(row){
         console.log("Delete", row);
+    }
+    onShowImage(row){
+        console.log("image", row);
+       this.router.navigate(["/images/show", row.id]);
     }
 }

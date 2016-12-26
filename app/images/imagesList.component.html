@@ -3,6 +3,8 @@
         [rows]="images"
         [showDeleteButton]="true"
         [showEditButton]="true"
+        [showIconButton]="true"
         (deletingRow)="onDeletingRow($event)"
-        (editingRow)="onEditingRow($event)">
+        (editingRow)="onEditingRow($event)"
+        (iconAction)="onShowImage($event)">
 </marvell-grid>
