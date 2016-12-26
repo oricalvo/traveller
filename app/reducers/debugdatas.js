@@ -29,7 +29,7 @@ exports.actions = {
 function reducer(state, action) {
     if (state === void 0) { state = exports.initialState; }
     if (action.type == exports.debugdataActionTypes.LOAD_DEBUGDATAS) {
-        return Object.assign({}, state, { data: action.debugData });
+        return Object.assign({}, state, { data: action.debugdatas });
     }
     else if (action.type == exports.debugdataActionTypes.SELECT_DEBUGDATA) {
         return Object.assign({}, state, { selected: action.debugData });

@@ -35,7 +35,7 @@ export const actions = {
 
 export function reducer(state: DebugDataState = initialState, action: any): DebugDataState {
     if(action.type == debugdataActionTypes.LOAD_DEBUGDATAS) {
-        return Object.assign({}, state, {data: action.debugData});
+        return Object.assign({}, state, {data: action.debugdatas});
     }
     else if(action.type == debugdataActionTypes.SELECT_DEBUGDATA) {
         return Object.assign({}, state, {selected: action.debugData});
