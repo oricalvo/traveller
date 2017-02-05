@@ -4,3 +4,84 @@
   height: 100%;
   width: 100%;
 }
+
+.editor-label {
+  font-weight: bold;
+  color: green;
+}
+
+.tab.debug {
+  padding: 1em;
+
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .name {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+
+    textarea {
+      width: 30em;
+      height: 10em;
+    }
+  }
+
+  .images {
+    margin-left: 1em;
+    width: 7em;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      height: 10em;
+      overflow: auto;
+
+      li {
+        display: flex;
+        flex-direction: row;
+        padding: 0.5em 0;
+
+        md-icon {
+          position: relative;
+          top: -2px;
+          cursor: pointer;
+          margin-left: auto;
+        }
+      }
+    }
+  }
+
+  .upload-file {
+    flex-direction: column;
+    margin-top: 2em;
+
+    input[type=file] {
+      display: none;
+    }
+
+    input {
+      padding: 0.5em;
+    }
+
+    button {
+      padding: 0.5em;
+    }
+  }
+}
+ul {
+  list-style-type: none;
+}
+.table-like {
+float:left;
+  input[type="date"] {
+    width: 130px;
+  }
+  input[type="number"] {
+    width: 50px;
+  }
+}

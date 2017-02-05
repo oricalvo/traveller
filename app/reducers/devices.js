@@ -114,8 +114,7 @@ function changeDeviceName(state, action) {
     if (deviceId && name && state.dataSet[deviceId]) {
         var dataSet = Object.assign({}, state.dataSet, (_a = {},
             _a[deviceId] = Object.assign({}, state.dataSet[deviceId], { name: name }),
-            _a
-        ));
+            _a));
         var displayedItems = getDisplayedItems({
             dataSet: dataSet,
             sortBy: state.sortBy,
@@ -132,8 +131,7 @@ function changeDeviceProps(state, action) {
     if (deviceId && state.dataSet[deviceId]) {
         var dataSet = Object.assign({}, state.dataSet, (_a = {},
             _a[deviceId] = Object.assign({}, state.dataSet[deviceId], { props: props }),
-            _a
-        ));
+            _a));
         var displayedItems = getDisplayedItems({
             dataSet: dataSet,
             sortBy: state.sortBy,

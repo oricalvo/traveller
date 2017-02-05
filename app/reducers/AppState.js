@@ -1,18 +1,19 @@
 "use strict";
+var DeviceSortBy;
 (function (DeviceSortBy) {
     DeviceSortBy[DeviceSortBy["name"] = 0] = "name";
     DeviceSortBy[DeviceSortBy["serial"] = 1] = "serial";
     DeviceSortBy[DeviceSortBy["date"] = 2] = "date";
-})(exports.DeviceSortBy || (exports.DeviceSortBy = {}));
-var DeviceSortBy = exports.DeviceSortBy;
+})(DeviceSortBy = exports.DeviceSortBy || (exports.DeviceSortBy = {}));
+var ImageSortBy;
 (function (ImageSortBy) {
     ImageSortBy[ImageSortBy["path"] = 0] = "path";
-})(exports.ImageSortBy || (exports.ImageSortBy = {}));
-var ImageSortBy = exports.ImageSortBy;
+})(ImageSortBy = exports.ImageSortBy || (exports.ImageSortBy = {}));
+var DebugDataSortBy;
 (function (DebugDataSortBy) {
     DebugDataSortBy[DebugDataSortBy["desc"] = 0] = "desc";
-})(exports.DebugDataSortBy || (exports.DebugDataSortBy = {}));
-var DebugDataSortBy = exports.DebugDataSortBy;
+})(DebugDataSortBy = exports.DebugDataSortBy || (exports.DebugDataSortBy = {}));
+var StressTestSortBy;
 (function (StressTestSortBy) {
     StressTestSortBy[StressTestSortBy["id"] = 0] = "id";
     StressTestSortBy[StressTestSortBy["qtyIn"] = 1] = "qtyIn";
@@ -37,6 +38,5 @@ var DebugDataSortBy = exports.DebugDataSortBy;
     StressTestSortBy[StressTestSortBy["updatedByPersonId"] = 20] = "updatedByPersonId";
     StressTestSortBy[StressTestSortBy["comments"] = 21] = "comments";
     StressTestSortBy[StressTestSortBy["updateDate"] = 22] = "updateDate";
-})(exports.StressTestSortBy || (exports.StressTestSortBy = {}));
-var StressTestSortBy = exports.StressTestSortBy;
+})(StressTestSortBy = exports.StressTestSortBy || (exports.StressTestSortBy = {}));
 //# sourceMappingURL=AppState.js.map

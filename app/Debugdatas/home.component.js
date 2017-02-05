@@ -10,19 +10,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 require("reflect-metadata");
 require("zone.js");
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var DebugDatasHomeComponent = (function () {
     function DebugDatasHomeComponent() {
     }
-    DebugDatasHomeComponent = __decorate([
-        core_1.Component({
-            selector: 'DebugDatas-home',
-            template: require("./home.component.html"),
-            styles: [require("./home.component.css")],
-        }), 
-        __metadata('design:paramtypes', [])
-    ], DebugDatasHomeComponent);
     return DebugDatasHomeComponent;
 }());
+DebugDatasHomeComponent = __decorate([
+    core_1.Component({
+        selector: 'DebugDatas-home',
+        template: require("./home.component.html"),
+        styles: [require("./home.component.css")],
+    }),
+    __metadata("design:paramtypes", [])
+], DebugDatasHomeComponent);
 exports.DebugDatasHomeComponent = DebugDatasHomeComponent;
 //# sourceMappingURL=home.component.js.map

@@ -9,17 +9,14 @@ import {StressTestSortBy} from "./AppState";
 
 export const stresstestActionTypes= {
     LOAD_STRESSTEST: "LOAD_STRESSTEST",
+    SELECT_STRESSTEST: "SELECT_STRESSTEST",
 
 };
-
-export const initialState = {
+export const initialState: StressTestState = {
     data: null,
-    // sortBy: DeviceSortBy.name,
-    // isAscending: true,
-    // isLoading: true,
-    // displayedItems: null,
-    // currentDeviceId: null
+    selected: null,
 };
+
 
 export const actions = {
     loadStressTests: function(Stresstests: StressTest[]) {
@@ -28,36 +25,25 @@ export const actions = {
             Stresstests: Stresstests,
         }
     },
+    selectStressTest: function(stressTest: StressTest) {
+        return {
+            type: stresstestActionTypes.SELECT_STRESSTEST,
+            stressTest: stressTest,
+        }
+    },
 
 };
 export function reducer(state: any = initialState, action: any): StressTestState {
     if(action.type == stresstestActionTypes.LOAD_STRESSTEST) {
         return Object.assign({}, state, {data: action.Stresstests});
     }
-
+    else if(action.type == stresstestActionTypes.SELECT_STRESSTEST) {
+        return Object.assign({}, state, {selected: action.stressTest});
+    }
     return state;
 }
-function loadImageData(state, action) {
 
-    if (action.error) {
-        return Object.assign({}, state, {
-            isLoading: false,
-            errorMessage: action.payload.message
-        })
-    }
 
-    let dataSet = _.fromPairs(action.payload.map(SS => [SS.id, SS]))
-    return Object.assign({}, state, {
-        isLoading: false,
-        dataSet,
-        displayedItems: getDisplayedItems({
-            dataSet,
-            sortBy: state.sortBy,
-            isAscending: state.isAscending
-
-        })
-    })
-}
 function sortStressTestsData(state, action) {
     return Object.assign({}, state, {
         sortBy: action.payload.sortBy,
@@ -120,7 +106,7 @@ function getDisplayedItems(options) {
 
 
         default:
-            sortOperator = (v: any) => v.path.toLocaleLowerCase()
+            sortOperator = (v: any) => v.updateDate.toLocaleLowerCase()
             break
     }
 

@@ -1,1 +1,145 @@
-<h1>Edit StressTest</h1>
+<h3>Edit StressTest</h3>
+
+
+<md-tab-group>
+    <md-tab label="Stress/task">
+        <br/>
+        <div class="flex-row">
+
+            <label>clips</label>
+            <input type="text" [(ngModel)]="clips" required md-maxlength="10">
+            <label>FA No</label>
+            <input type="text" [(ngModel)]="faNumber" required md-maxlength="10">
+            <label>Reballing</label>
+            <input type="text" [(ngModel)]="reballingNumber" required md-maxlength="10">
+            <label>Box</label>
+            <input type="text" [(ngModel)]="box" required md-maxlength="10">
+            <label>Zone</label>
+            <input type="text" [(ngModel)]="zone" required md-maxlength="10">
+        </div>
+        <div >
+            <br/>
+            <label class="editor-label">FA Discription</label>
+            <br/>
+            <textarea [(ngModel)]="faDiscription"></textarea>
+            <br/>
+            <label class="editor-label">FA Comments</label>
+            <br/>
+            <textarea [(ngModel)]="comments"></textarea>
+
+
+        </div>
+    </md-tab>
+    <md-tab label="Vendor">
+    </md-tab>
+    <md-tab label="Task's">
+    </md-tab>
+    <md-tab label="Duration Details">
+        <br/>
+        <div class ="flex-row">
+            <div class="table-like">
+                <ul>
+                    <li>&nbsp;</li>
+                    <li><label>Stress</label></li>
+                    <li><label>Test</label></li>
+                </ul>
+            </div>
+            <div class="table-like">
+                <ul>
+                    <li> <label>Qty In</label></li>
+                    <li><input type="number" [(ngModel)]="qtyIn" required md-maxlength="10"></li>
+                    <li> <input type="number" [(ngModel)]="testQtyIn" required md-maxlength="10"></li>
+                </ul>
+            </div>
+            <div class="table-like">
+                <ul>
+                    <li> <label>Duration</label></li>
+                    <li><input type="number" [(ngModel)]="stressDuration" required md-maxlength="10"></li>
+                    <li> <input type="number" [(ngModel)]="testDuration" required md-maxlength="10"></li>
+                </ul>
+            </div>
+            <div class="table-like">
+                <ul>
+                    <li> <label>Cycle In</label></li>
+                    <li><input type="number" [(ngModel)]="stressCycleIn" required md-maxlength="10"></li>
+                    <li></li>
+
+                </ul>
+            </div>
+            <div class="table-like">
+                <ul>
+                    <li> <label>Date In</label></li>
+                    <li><input type="date" [(ngModel)]="stressDateIn" required md-maxlength="10"></li>
+                    <li> <input type="date" [(ngModel)]="testDateIn" required md-maxlength="10"></li>
+
+                </ul>
+            </div>
+            <div class="table-like">
+                <ul>
+                    <li> <label>Date out</label></li>
+                    <li><input type="date" [(ngModel)]="stressDateOut" required md-maxlength="10"></li>
+                    <li> <input type="date" [(ngModel)]="testDateOut" required md-maxlength="10"></li>
+
+                </ul>
+            </div>
+            <div class="table-like">
+                <ul>
+                    <li> <label>Rejects</label></li>
+                    <li><input type="number" [(ngModel)]="stressReject" ></li>
+                    <li> <input type="number" [(ngModel)]="testRejects" ></li>
+
+                </ul>
+            </div>
+            <div class="table-like">
+                <ul>
+                    <li> <label>Qty Out</label></li>
+                    <li><input type="number" [(ngModel)]="stressQtyOut" ></li>
+                    <li> <input type="number" [(ngModel)]="testQtyOut" ></li>
+
+                </ul>
+            </div>
+
+
+
+        </div>
+    </md-tab>
+    <md-tab label="Debug">
+        <div class="tab debug">
+            <br/>
+            <ul>
+            <li *ngFor="let DebugData of debugData, let i=index">
+                <div class="flex-row">
+                <div class="name">
+                    <span class="editor-label">Description</span>
+                <textarea [(ngModel)]="DebugData.desc"></textarea>
+                </div>
+                <div class="images">
+                    <span class="editor-label">Images</span>
+                <ul>
+                    <li *ngFor="let image of DebugData.images, let i=index">
+                        <span>{{image.path}}</span>
+                        <md-icon (click)="deleteImage(image, i)">delete</md-icon>
+                    </li>
+                </ul>
+
+                </div>
+                <div class="actions">
+                    <md-icon>email</md-icon>
+                    <md-icon>print</md-icon>
+                </div>
+
+                </div>
+                <div class ="flex-row">
+                    <div class="upload-file">
+                        <div class="editor-label">Image File</div>
+                        <input type="file" #inputFile (change)="onFileSelected(inputFile)"/>
+                        <input readonly [ngModel]="selectedFile && selectedFile.name"><button (click)="inputFile.click()">...</button>
+                        <button (click)="upload()">Upload</button>
+                    </div>
+                </div>
+            </li>
+            </ul>
+
+        </div>
+    </md-tab>
+</md-tab-group>

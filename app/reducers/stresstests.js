@@ -6,9 +6,11 @@ var _ = require("lodash");
 var AppState_1 = require("./AppState");
 exports.stresstestActionTypes = {
     LOAD_STRESSTEST: "LOAD_STRESSTEST",
+    SELECT_STRESSTEST: "SELECT_STRESSTEST",
 };
 exports.initialState = {
     data: null,
+    selected: null,
 };
 exports.actions = {
     loadStressTests: function (Stresstests) {
@@ -17,33 +19,24 @@ exports.actions = {
             Stresstests: Stresstests,
         };
     },
+    selectStressTest: function (stressTest) {
+        return {
+            type: exports.stresstestActionTypes.SELECT_STRESSTEST,
+            stressTest: stressTest,
+        };
+    },
 };
 function reducer(state, action) {
     if (state === void 0) { state = exports.initialState; }
     if (action.type == exports.stresstestActionTypes.LOAD_STRESSTEST) {
         return Object.assign({}, state, { data: action.Stresstests });
     }
+    else if (action.type == exports.stresstestActionTypes.SELECT_STRESSTEST) {
+        return Object.assign({}, state, { selected: action.stressTest });
+    }
     return state;
 }
 exports.reducer = reducer;
-function loadImageData(state, action) {
-    if (action.error) {
-        return Object.assign({}, state, {
-            isLoading: false,
-            errorMessage: action.payload.message
-        });
-    }
-    var dataSet = _.fromPairs(action.payload.map(function (SS) { return [SS.id, SS]; }));
-    return Object.assign({}, state, {
-        isLoading: false,
-        dataSet: dataSet,
-        displayedItems: getDisplayedItems({
-            dataSet: dataSet,
-            sortBy: state.sortBy,
-            isAscending: state.isAscending
-        })
-    });
-}
 function sortStressTestsData(state, action) {
     return Object.assign({}, state, {
         sortBy: action.payload.sortBy,
@@ -125,7 +118,7 @@ function getDisplayedItems(options) {
             sortOperator = function (v) { return v.updateDate; };
             break;
         default:
-            sortOperator = function (v) { return v.path.toLocaleLowerCase(); };
+            sortOperator = function (v) { return v.updateDate.toLocaleLowerCase(); };
             break;
     }
     return _(_.values(options.dataSet))

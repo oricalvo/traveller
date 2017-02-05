@@ -74,11 +74,12 @@ export interface StressTest{
     readonly updatedByPersonId:  number;
     readonly comments:  string;
     readonly updateDate:  string; //Date
-
+    readonly debugData: DebugData[];
 }
 
 export interface StressTestState{
     readonly data: StressTest[]
+    readonly selected: StressTest;
 }
 export enum StressTestSortBy {
     id,qtyIn,stressDuration,stressCycleIn,stressDateIn,stressDateOut,stressReject,stressQtyOut,testQtyIn,testDuration,testDateIn,testDateOut,testRejects,testQtyOut,clips,reballingNumber,faNumber,box,zone,faDiscription,updatedByPersonId,comments,updateDate

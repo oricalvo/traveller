@@ -8,19 +8,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var DebugDatasNavComponent = (function () {
     function DebugDatasNavComponent() {
     }
-    DebugDatasNavComponent = __decorate([
-        core_1.Component({
-            selector: 'DebugDatas-nav',
-            template: require("./nav.component.html"),
-            styles: [require("./nav.component.css")]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], DebugDatasNavComponent);
     return DebugDatasNavComponent;
 }());
+DebugDatasNavComponent = __decorate([
+    core_1.Component({
+        selector: 'DebugDatas-nav',
+        template: require("./nav.component.html"),
+        styles: [require("./nav.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], DebugDatasNavComponent);
 exports.DebugDatasNavComponent = DebugDatasNavComponent;
 //# sourceMappingURL=nav.component.js.map

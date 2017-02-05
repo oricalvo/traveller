@@ -14,9 +14,9 @@ export class StressTestsWebApiMock implements IStressTestsWebApi {
         });
     }
 
-   getStressTest(box: string): Promise<StressTest> {
+   getStressTest(id: number): Promise<StressTest> {
        return Promise.resolve().then(() => {
-            const stresstest = stresstests.find(d => d.box == box);
+            const stresstest = stresstests.find(d => d.id == id);
             if (!stresstest) {
                throw new Error("Invalid stresstest id");
            }

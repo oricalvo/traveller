@@ -18,4 +18,9 @@ export class StressTestService {
             this.appStore.dispatch(actions.loadStressTests(stresstests));
         });
     }
+    select(id: number) {
+        this.stresstestsWebApi.getStressTest(id).then(stressTest => {
+            this.appStore.dispatch(actions.selectStressTest(stressTest));
+        });
+    }
 }
