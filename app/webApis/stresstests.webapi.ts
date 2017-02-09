@@ -27,7 +27,7 @@ export class StressTestsWebApi implements IStressTestsWebApi {
             throw new Error("Missing id parameter");
         }
 
-        return this.http.get("/api/stresstest/" + id).map(res => res.json()).toPromise();
+        return this.http.get("/api/stresstest/GetById/" + id).map(res => res.json()).toPromise();
     }
 
 

@@ -53,6 +53,39 @@ import {StressTestsWebApi} from "./webApis/stresstests.webapi";
 import {StressTestService} from "./services/stresstests.service";
 import {ImagesWebApi} from "./webApis/images.webapi";
 
+import {VendorHomeComponent} from "./vendors/home.component";
+import {VendorsNavComponent} from "./vendors/nav.component";
+import {VendorsListComponent} from "./vendors/vendorsList.component";
+import {VendorsService} from "./services/vendors.service";
+import {VendorsWebApi} from "./webApis/vendors.webapi";
+
+import {TechnologyHomeComponent} from "./technologys/home.component";
+import {TechnologysNavComponent} from "./technologys/nav.component";
+import {TechnologysListComponent} from "./technologys/technologysList.component";
+import {EditTechnologyComponent} from "./technologys/editTechnology.component";
+import {TechnologysService} from "./services/technologys.service";
+import {TechnologysWebApi} from "./webApis/technologys.webapi";
+
+import {PackageHomeComponent} from "./packages/home.component";
+import {PackagesNavComponent} from "./packages/nav.component";
+import {PackagesListComponent} from "./packages/packagesList.component";
+import {EditPackageComponent} from "./packages/editPackage.component";
+import {PackagesService} from "./services/packages.service";
+import {PackagesWebApi} from "./webApis/packages.webapi";
+
+
+import {VendorjobsHomeComponent} from "./vendorjobs/home.component";
+import {VendorjobsNavComponent} from "./vendorjobs/nav.component";
+import {VendorjobsListComponent} from "./vendorjobs/vendorjobsList.component";
+import {VendorjobsService} from "./services/vendorjobs.service";
+import {VendorjobsWebApi} from "./webApis/vendorjobs.webapi";
+
+import {FabricatorsWebApi} from "./webApis/fabricators.webapi";
+import {FabricatorHomeComponent} from "./fabricators/home.component";
+import {FabricatorsNavComponent} from "./fabricators/nav.component";
+import {FabricatorsListComponent} from "./fabricators/fabricatorsList.component";
+import {FabricatorsService} from "./services/fabricators.service";
+
 require("node_modules/@angular/material/core/theming/prebuilt/indigo-pink.css!css");
 
 const webApis = [
@@ -62,7 +95,12 @@ const webApis = [
     {provide: "imagesWebApi", useClass: ImagesWebApi},
     //{ provide: "debugdatasWebApi", useClass: debugdatasWebApiMock },
     {provide: "debugdatasWebApi", useClass: DebugDataWebApi},
-    {provide: "stresstestsWebApi", useClass: StressTestsWebApi}
+    {provide: "stresstestsWebApi", useClass: StressTestsWebApi},
+    {provide: "vendorsWebApi", useClass: VendorsWebApi},
+    {provide: "vendorjobsWebApi", useClass: VendorjobsWebApi},
+    {provide: "fabricatorsWebApi", useClass: FabricatorsWebApi},
+    {provide: "technologysWebApi", useClass: TechnologysWebApi},
+    {provide: "packagesWebApi", useClass: PackagesWebApi}
 ];
 
 @NgModule({
@@ -92,6 +130,28 @@ const webApis = [
         EditImageComponent,
         ShowImageComponent,
 
+        VendorHomeComponent,
+        VendorsNavComponent,
+        VendorsListComponent,
+
+        TechnologyHomeComponent,
+        TechnologysNavComponent,
+        TechnologysListComponent,
+        EditTechnologyComponent,
+
+        PackageHomeComponent,
+        PackagesNavComponent,
+        PackagesListComponent,
+        EditPackageComponent,
+
+        FabricatorHomeComponent,
+        FabricatorsNavComponent,
+        FabricatorsListComponent,
+
+        VendorjobsHomeComponent,
+        VendorjobsNavComponent,
+        VendorjobsListComponent,
+
         DebugDatasHomeComponent,
         DebugDatasNavComponent,
         DebugDatasListComponent,
@@ -109,6 +169,11 @@ const webApis = [
         ImagesService,
         DebugDatasService,
         StressTestService,
+        FabricatorsService,
+        VendorsService,
+        VendorjobsService,
+        TechnologysService,
+        PackagesService,
         ...webApis,
     ],
     bootstrap: [AppComponent]

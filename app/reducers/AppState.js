@@ -1,10 +1,30 @@
 "use strict";
+var FabricatorSortBy;
+(function (FabricatorSortBy) {
+    FabricatorSortBy[FabricatorSortBy["name"] = 0] = "name";
+})(FabricatorSortBy = exports.FabricatorSortBy || (exports.FabricatorSortBy = {}));
+var TechnologySortBy;
+(function (TechnologySortBy) {
+    TechnologySortBy[TechnologySortBy["name"] = 0] = "name";
+})(TechnologySortBy = exports.TechnologySortBy || (exports.TechnologySortBy = {}));
+var PackageSortBy;
+(function (PackageSortBy) {
+    PackageSortBy[PackageSortBy["name"] = 0] = "name";
+})(PackageSortBy = exports.PackageSortBy || (exports.PackageSortBy = {}));
 var DeviceSortBy;
 (function (DeviceSortBy) {
     DeviceSortBy[DeviceSortBy["name"] = 0] = "name";
     DeviceSortBy[DeviceSortBy["serial"] = 1] = "serial";
     DeviceSortBy[DeviceSortBy["date"] = 2] = "date";
 })(DeviceSortBy = exports.DeviceSortBy || (exports.DeviceSortBy = {}));
+var VendorSortBy;
+(function (VendorSortBy) {
+    VendorSortBy[VendorSortBy["name"] = 0] = "name";
+})(VendorSortBy = exports.VendorSortBy || (exports.VendorSortBy = {}));
+var vendorJobSortBy;
+(function (vendorJobSortBy) {
+    vendorJobSortBy[vendorJobSortBy["name"] = 0] = "name";
+})(vendorJobSortBy = exports.vendorJobSortBy || (exports.vendorJobSortBy = {}));
 var ImageSortBy;
 (function (ImageSortBy) {
     ImageSortBy[ImageSortBy["path"] = 0] = "path";

@@ -1,11 +1,16 @@
 /**
  * Created by eilamc on 12/19/2016.
  */
+import "reflect-metadata";
+import "zone.js";
+//import { Component } from '@angular/core';
 import { Component } from '@angular/core';
 import {Params, ActivatedRoute, ActivatedRouteSnapshot} from "@angular/router";
-import {StressTest,DebugData} from "../reducers/AppState";
+import {StressTest, DebugData, vendorJob,Vendor} from "../reducers/AppState";
 import {StressTestService} from "../services/stresstests.service";
+import {VendorsService} from "../services/vendors.service";
 import {AppStore} from "../services/appStore";
+import {AfterViewInit} from '@angular/core';
 
 @Component({
     selector: 'edit-StressTests',
@@ -38,13 +43,16 @@ export class EditStressTestComponent {
      comments:  string;
      updateDate:  string; //Date
      debugData: DebugData[];
-
-    constructor(route: ActivatedRoute,private StressTestService:StressTestService, appStore: AppStore)
+     VendorJob:vendorJob;
+     Vendors:Vendor[];
+    constructor(route: ActivatedRoute,private StressTestService:StressTestService,private appStore: AppStore,private vendorsService: VendorsService)
     {
         this.id =  route.snapshot.params["id"]*1;
+        this.StressTestService.select(this.id);
+        this.VendorJob=null;
+
         appStore.subscribe(()=> {
             this.StressTest = appStore.state.stresstests.selected;
-            this.id=this.StressTest.id;
             this.id=this.StressTest.id;
             this.qtyIn=this.StressTest.qtyIn;
             this.stressDuration=this.StressTest.stressDuration;
@@ -68,11 +76,20 @@ export class EditStressTestComponent {
             this.updatedByPersonId=this.StressTest.updatedByPersonId;
             this.comments=this.StressTest.comments;
             this.updateDate=this.StressTest.updateDate;
-
+            this.VendorJob=this.StressTest.vendorJob;
             this.debugData = this.StressTest.debugData || [];
         });
 
-        this.StressTestService.select(this.id);
-        console.log(this.id);
+       // this.StressTestService.select(this.id);
+
+
+    }
+    ngOnInit()
+    {
+        this.appStore.subscribe(()=>{
+            this.Vendors = this.appStore.state.vendors.data;
+        });
+
+        this.vendorsService.loadAll();
     }
 }

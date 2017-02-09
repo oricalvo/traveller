@@ -31,6 +31,39 @@
         </div>
     </md-tab>
     <md-tab label="Vendor">
+        <div class="flex-row">
+            <br/><br/><br/>
+                <div class="vendor">
+                    <span class="editor-label">Job Number</span>
+                    <input type="text" [ngModel]="VendorJob?.jobNum" (ngModelChange)="VendorJob.jobNum=$event">
+                </div>
+            <div class="vendor">
+                <span class="editor-label">Invoice Number</span>
+                <input type="text" [ngModel]="VendorJob?.invoiceNum" (ngModelChange)="VendorJob.invoiceNum=$event">
+            </div>
+            <div class="vendor">
+                <span type="text" class="editor-label">Approval Date</span>
+                <input [ngModel]="VendorJob?.approvalDate"(ngModelChange)="VendorJob.approvalDate=$event">
+            </div>
+            <div class="vendor">
+                <span class="editor-label">Vendor Name</span>
+                <select [(ngModel)]="VendorJob?.vendor.id" style="width:100px" >
+                    <option *ngFor="let v of Vendors" [ngValue]="v.id">{{v?.name}}</option>
+                </select>
+
+
+            </div>
+            <div class="clearfix"></div>
+            <br/>
+            <div class="vendor">
+                <span class="editor-label">comments</span>
+                <input [ngModel]="VendorJob?.comments"(ngModelChange)="VendorJob.approvalDate=$event">
+            </div>
+            <h3>Need to change DropBox to handle Vendor change on select</h3>
+
+                                    {{VendorJob?.vendor.id}}{{VendorJob?.vendor.name}}
+
+        </div>
     </md-tab>
     <md-tab label="Task's">
     </md-tab>

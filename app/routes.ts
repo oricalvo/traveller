@@ -21,6 +21,23 @@ import {NullComponent} from "./components/null.component";
 import {AdminComponent} from "./admin/admin.component";
 
 
+import {VendorHomeComponent} from "./vendors/home.component";
+import {VendorsListComponent} from "./vendors/vendorsList.component";
+
+import {VendorjobsHomeComponent} from "./vendorjobs/home.component";
+import {VendorjobsListComponent} from "./vendorjobs/vendorjobsList.component";
+
+import {FabricatorHomeComponent} from "./fabricators/home.component";
+import {FabricatorsListComponent} from "./fabricators/fabricatorsList.component";
+
+import {TechnologyHomeComponent} from "./technologys/home.component";
+import {TechnologysListComponent} from "./technologys/technologysList.component";
+import {EditTechnologyComponent} from "./technologys/editTechnology.component";
+
+import {PackageHomeComponent} from "./packages/home.component";
+import {PackagesListComponent} from "./packages/packagesList.component";
+import {EditPackageComponent} from "./packages/editPackage.component";
+
 export const routes = [
     { path: '', component: NullComponent },
     {
@@ -38,6 +55,56 @@ export const routes = [
             { path: '', component: ImagesListComponent },
             { path: 'edit/:id', component: EditImageComponent },
         ]
+
+    },
+    {
+        path: 'vendors',
+        component: VendorHomeComponent,
+        children: [
+            { path: '', component: VendorsListComponent },
+            { path: 'edit/:id', component: EditImageComponent },
+            { path: 'show/:id', component: ShowImageComponent },
+        ]
+
+    },
+    {
+        path: 'vendorjobs',
+        component: VendorjobsHomeComponent,
+        children: [
+            { path: '', component: VendorjobsListComponent },
+            { path: 'edit/:id', component: EditImageComponent },
+            { path: 'show/:id', component: ShowImageComponent },
+        ]
+
+    },
+    {
+        path: 'fabricators',
+        component: FabricatorHomeComponent,
+        children: [
+            { path: '', component: FabricatorsListComponent },
+
+        ]
+
+    },
+    {
+        path: 'technologys',
+        component: TechnologyHomeComponent,
+        children: [
+            { path: '', component: TechnologysListComponent},
+            { path: 'edit/:id', component: EditTechnologyComponent},
+
+        ]
+
+    },
+    {
+        path: 'packages',
+        component: PackageHomeComponent,
+        children: [
+            { path: '', component: PackagesListComponent},
+            { path: 'edit/:id', component: EditPackageComponent},
+
+        ]
+
     },
     {
         path: 'debugdatas',
