@@ -6,7 +6,7 @@ import "zone.js";
 //import { Component } from '@angular/core';
 import { Component } from '@angular/core';
 import {Params, ActivatedRoute, ActivatedRouteSnapshot} from "@angular/router";
-import {StressTest, DebugData, vendorJob,Vendor} from "../reducers/AppState";
+import {StressTest, DebugData, vendorJob, Vendor, TaskData} from "../reducers/AppState";
 import {StressTestService} from "../services/stresstests.service";
 import {VendorsService} from "../services/vendors.service";
 import {AppStore} from "../services/appStore";
@@ -45,6 +45,8 @@ export class EditStressTestComponent {
      debugData: DebugData[];
      VendorJob:vendorJob;
      Vendors:Vendor[];
+     taskData:TaskData[];
+
     constructor(route: ActivatedRoute,private StressTestService:StressTestService,private appStore: AppStore,private vendorsService: VendorsService)
     {
         this.id =  route.snapshot.params["id"]*1;
@@ -78,6 +80,7 @@ export class EditStressTestComponent {
             this.updateDate=this.StressTest.updateDate;
             this.VendorJob=this.StressTest.vendorJob;
             this.debugData = this.StressTest.debugData || [];
+            this.taskData = this.StressTest.taskData || [];
         });
 
        // this.StressTestService.select(this.id);

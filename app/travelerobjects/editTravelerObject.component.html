@@ -1,0 +1,318 @@
+
+<button class="button button1"  (click)="onSave()">save</button>
+<br><br>
+<label>Device</label> &nbsp;
+<hr>
+    <div class="row">
+        <div class="col-sm-2 col-lg-3 " >
+            <label>NickName</label><br>
+            <select class="btn btn-primary select1" md-select [ngModel]="NickNameSelected?.id" (ngModelChange)="onNicNameChange($event)" style="width:100px" >
+
+                <option md-option *ngFor="let v of nicknamesList" [ngValue]="v?.id">{{v?.name}}</option>
+            </select>
+        </div>
+        <div class="col-sm-2 col-lg-2 " >
+            <label>Device</label><br>
+            <select class="btn btn-primary select2" md-select [ngModel]="TravelerDeviceSelected?.mantisDevice?.id" (ngModelChange)="onDevChange($event)" style="width:100px" >
+            <option md-option *ngFor="let v of devicesList" [ngValue]="v?.mantisDevice.id">{{v?.name}}</option>
+            </select>
+        </div>
+
+        <div class="col-sm-2 col-lg-2 " >
+            <label>lot</label><br>
+            <select class="btn btn-primary select3" md-select [ngModel]="LotSelected?.mantisLot.id" (ngModelChange)="onLotChange($event)" style="width:100px" >
+                <option md-option  *ngFor="let v of lotsList" [ngValue]="v?.mantisLot.id">{{v?.name}}</option>
+            </select>
+        </div>
+
+        <div class="col-sm-6 col-lg-5 " (mouseleave)="closeTestProgramList()" >
+            <label>Test Program</label><br>
+            <button class="btn btn-primary select4" (click)="toggleTestProgramList()">Select Test Program <span class="caret"></span> </button>
+
+            <div  [ngStyle]="tplistdisplay" class="tplistdisplay" >
+
+
+                <ul >
+                    <li>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Selected Bin  &nbsp; &nbsp; TestProgram  </li>
+                    <li   *ngFor="let v of TravelerTestPrograms; let i = index">
+                        <md-checkbox [checked]=TpSelect[i]></md-checkbox>
+                        <select class="btn btn-info" [ngModel]="v.expectedBin?.id" (ngModelChange)="onBinChange($event,v.id)" style="width:100px" >
+                            <option *ngFor="let t of binList" [ngValue]="t?.id">{{t?.name}}</option>
+                        </select>
+                        {{v?.testProgram?.mantisTestProgram.testProgramName}}
+
+
+
+                        {{v?.expectedBin?.name}}
+
+
+
+
+                    </li>
+                </ul >
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+<hr>
+
+<br>
+<label>Package</label> &nbsp;
+<hr>
+
+<div class="row">
+    <div class="fabricator col-sm-2 col-lg-2 ">
+        <label>Fabricator</label><br>
+        <select class="btn btn-primary" [ngModel]="FabricatorSelected?.id" (ngModelChange)="onFabricatorChange($event)" style="width:100px" >
+            <option *ngFor="let v of fabricatorList" [ngValue]="v?.id">{{v?.name}}</option>
+        </select>
+    </div>
+    <div class="Technology  col-sm-2 col-lg-2">
+        <label>Technology</label><br>
+        <select class="btn btn-primary" [ngModel]="TechnologySelected?.id" (ngModelChange)="onTechnolgyChange($event)" style="width:100px" >
+            <option *ngFor="let v of technologyList" [ngValue]="v?.id">{{v?.name}}</option>
+        </select>
+    </div>
+    <div class="Packages  col-sm-2 col-lg-2">
+        <label>Package</label><br>
+        <select class="btn btn-primary" [ngModel]="PackageSelected?.id" (ngModelChange)="onPackageChange($event)" style="width:100px" >
+            <option *ngFor="let v of packageList" [ngValue]="v?.id">{{v?.name}}</option>
+        </select>
+    </div>
+    <div class="AssemblyLocation  col-sm-2 col-lg-2">
+        <label>Assembly Location</label><br>
+        <select class="btn btn-primary" [ngModel]="LocationSelected?.id" (ngModelChange)="onChangeObj($event)" style="width:100px" >
+            <option *ngFor="let v of locationList" [ngValue]="v?.id">{{v?.name}}</option>
+        </select>
+    </div>
+
+</div>
+<br>
+<label>Stress</label> &nbsp;
+<hr>
+<div class="row">
+    <div class="fabricator col-sm-2 col-lg-2 ">
+        <label>Stress</label><br>
+        <select class="btn btn-primary" [ngModel]="FabricatorSelected?.id" (ngModelChange)="onChangeObj($event)" style="width:100px" >
+            <option *ngFor="let v of fabricatorList" [ngValue]="v?.id">{{v?.name}}</option>
+        </select>
+    </div>
+    <div class="fabricator col-sm-2 col-lg-2 ">
+        <label>Total Duration</label><br>
+        <input  [(ngModel)]="totalDuration">
+    </div>
+    <div class="fabricator col-sm-2 col-lg-2 ">
+        <label>Jedec Level</label><br>
+        <input  [(ngModel)]="jedecLevel">
+    </div>
+    <div class="fabricator col-sm-2 col-lg-2 ">
+        <label>Condition</label><br>
+        <input  [(ngModel)]="condition">
+    </div>
+
+</div>
+
+
+
+<StressTest
+        [stresstests]="TravelerObject?.stressTests"
+></StressTest>
+<!--
+<ul>
+    <li *ngFor="let stresstest of StressTests, let i=index">
+<md-tab-group>
+    <md-tab label="Stress/task">
+        <br/>
+        <div class="flex-row">
+
+            <label>clips</label>
+            <input type="text" [(ngModel)]="stresstest.clips" required md-maxlength="10">
+            <label>FA No</label>
+            <input type="text" [(ngModel)]="stresstest.faNumber" required md-maxlength="10">
+            <label>Reballing</label>
+            <input type="text" [(ngModel)]="stresstest.reballingNumber" required md-maxlength="10">
+            <label>Box</label>
+            <input type="text" [(ngModel)]="stresstest.box" required md-maxlength="10">
+            <label>Zone</label>
+            <input type="text" [(ngModel)]="stresstest.zone" required md-maxlength="10">
+        </div>
+        <div >
+            <br/>
+            <label class="editor-label">FA Discription</label>
+            <br/>
+            <textarea [(ngModel)]="stresstest.faDiscription"></textarea>
+            <br/>
+            <label class="editor-label">FA Comments</label>
+            <br/>
+            <textarea [(ngModel)]="stresstest.comments"></textarea>
+
+
+        </div>
+    </md-tab>
+    <md-tab label="Vendor">
+        <div class="flex-row">
+            <br/><br/><br/>
+                <div class="vendor">
+                    <span class="editor-label">Job Number</span>
+                    <input type="text" [ngModel]="stresstest.VendorJob?.jobNum" (ngModelChange)="VendorJob.jobNum=$event">
+                </div>
+            <div class="vendor">
+                <span class="editor-label">Invoice Number</span>
+                <input type="text" [ngModel]="stresstest.VendorJob?.invoiceNum" (ngModelChange)="VendorJob.invoiceNum=$event">
+            </div>
+            <div class="vendor">
+                <span type="text" class="editor-label">Approval Date</span>
+                <input [ngModel]="stresstest.VendorJob?.approvalDate"(ngModelChange)="VendorJob.approvalDate=$event">
+            </div>
+            <div class="vendor">
+                <span class="editor-label">Vendor Name</span>
+                <select [(ngModel)]="stresstest.VendorJob?.vendor.id" style="width:100px" >
+                    <option *ngFor="let v of stresstest.Vendors" [ngValue]="v.id">{{v?.name}}</option>
+                </select>
+
+
+            </div>
+            <div class="clearfix"></div>
+            <br/>
+            <div class="vendor">
+                <span class="editor-label">comments</span>
+                <input [ngModel]="stresstest.VendorJob?.comments"(ngModelChange)="stresstest.VendorJob.approvalDate=$event">
+            </div>
+            <h3>Need to change DropBox to handle Vendor change on select</h3>
+
+                                    {{stresstest.VendorJob?.vendor.id}}{{stresstest.VendorJob?.vendor.name}}
+
+        </div>
+    </md-tab>
+    <md-tab label="Task's">
+
+        <div class="tab debug">
+            <br/>
+            <ul>
+                <li *ngFor="let taskdatas of stresstest.taskData, let i=index">
+                    {{taskdatas.testProgramId?.temperature}}
+                    {{taskdatas.testProgramId?.id}}
+                    {{taskdatas.testProgramId?.testProgramName}}
+
+                </li>
+            </ul>
+
+        </div>
+
+    </md-tab>
+    <md-tab label="Duration Details">
+        <br/>
+        <div class ="flex-row">
+            <div class="table-like">
+                <ul>
+                    <li>&nbsp;</li>
+                    <li><label>Stress</label></li>
+                    <li><label>Test</label></li>
+                </ul>
+            </div>
+            <div class="table-like">
+                <ul>
+                    <li> <label>Qty In</label></li>
+                    <li><input type="number" [(ngModel)]="stresstest.qtyIn" required md-maxlength="10"></li>
+                    <li> <input type="number" [(ngModel)]="stresstest.testQtyIn" required md-maxlength="10"></li>
+                </ul>
+            </div>
+            <div class="table-like">
+                <ul>
+                    <li> <label>Duration</label></li>
+                    <li><input type="number" [(ngModel)]="stresstest.stressDuration" required md-maxlength="10"></li>
+                    <li> <input type="number" [(ngModel)]="stresstest.testDuration" required md-maxlength="10"></li>
+                </ul>
+            </div>
+            <div class="table-like">
+                <ul>
+                    <li> <label>Cycle In</label></li>
+                    <li><input type="number" [(ngModel)]="stresstest.stressCycleIn" required md-maxlength="10"></li>
+                    <li></li>
+
+                </ul>
+            </div>
+            <div class="table-like">
+                <ul>
+                    <li> <label>Date In</label></li>
+                    <li><input type="date" [(ngModel)]="stresstest.stressDateIn" required md-maxlength="10"></li>
+                    <li> <input type="date" [(ngModel)]="stresstest.testDateIn" required md-maxlength="10"></li>
+
+                </ul>
+            </div>
+            <div class="table-like">
+                <ul>
+                    <li> <label>Date out</label></li>
+                    <li><input type="date" [(ngModel)]="stresstest.stressDateOut" required md-maxlength="10"></li>
+                    <li> <input type="date" [(ngModel)]="stresstest.testDateOut" required md-maxlength="10"></li>
+
+                </ul>
+            </div>
+            <div class="table-like">
+                <ul>
+                    <li> <label>Rejects</label></li>
+                    <li><input type="number" [(ngModel)]="stresstest.stressReject" ></li>
+                    <li> <input type="number" [(ngModel)]="stresstest.testRejects" ></li>
+
+                </ul>
+            </div>
+            <div class="table-like">
+                <ul>
+                    <li> <label>Qty Out</label></li>
+                    <li><input type="number" [(ngModel)]="stresstest.stressQtyOut" ></li>
+                    <li> <input type="number" [(ngModel)]="stresstest.testQtyOut" ></li>
+
+                </ul>
+            </div>
+
+
+
+        </div>
+    </md-tab>
+    <md-tab label="Debug">
+        <div class="tab debug">
+            <br/>
+            <ul>
+            <li *ngFor="let DebugData of stresstest.debugData, let i=index">
+                <div class="flex-row">
+                <div class="name">
+                    <span class="editor-label">Description</span>
+                <textarea [(ngModel)]="DebugData.desc"></textarea>
+                </div>
+                <div class="images">
+                    <span class="editor-label">Images</span>
+                <ul>
+                    <li *ngFor="let image of DebugData.images, let i=index">
+                        <span>{{image.path}}</span>
+                        <md-icon (click)="deleteImage(image, i)">delete</md-icon>
+                    </li>
+                </ul>
+
+                </div>
+                <div class="actions">
+                    <md-icon>email</md-icon>
+                    <md-icon>print</md-icon>
+                </div>
+
+                </div>
+                <div class ="flex-row">
+                    <div class="upload-file">
+                        <div class="editor-label">Image File</div>
+                        <input type="file" #inputFile (change)="onFileSelected(inputFile)"/>
+                        <input readonly [ngModel]="selectedFile && selectedFile.name"><button (click)="inputFile.click()">...</button>
+                        <button (click)="upload()">Upload</button>
+                    </div>
+                </div>
+            </li>
+            </ul>
+
+        </div>
+    </md-tab>
+</md-tab-group>
+    </li>
+</ul>
+-->

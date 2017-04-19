@@ -66,6 +66,20 @@
         </div>
     </md-tab>
     <md-tab label="Task's">
+
+        <div class="tab debug">
+            <br/>
+            <ul>
+                <li *ngFor="let taskdatas of taskData, let i=index">
+                    {{taskdatas.testProgramId?.temperature}}
+                    {{taskdatas.testProgramId?.id}}
+                    {{taskdatas.testProgramId?.testProgramName}}
+
+                </li>
+            </ul>
+
+        </div>
+
     </md-tab>
     <md-tab label="Duration Details">
         <br/>
@@ -139,39 +153,12 @@
     <md-tab label="Debug">
         <div class="tab debug">
             <br/>
-            <ul>
-            <li *ngFor="let DebugData of debugData, let i=index">
-                <div class="flex-row">
-                <div class="name">
-                    <span class="editor-label">Description</span>
-                <textarea [(ngModel)]="DebugData.desc"></textarea>
-                </div>
-                <div class="images">
-                    <span class="editor-label">Images</span>
-                <ul>
-                    <li *ngFor="let image of DebugData.images, let i=index">
-                        <span>{{image.path}}</span>
-                        <md-icon (click)="deleteImage(image, i)">delete</md-icon>
-                    </li>
-                </ul>
+            <DebugData
+                    [debugdatas]="StressTest?.debugData"
 
-                </div>
-                <div class="actions">
-                    <md-icon>email</md-icon>
-                    <md-icon>print</md-icon>
-                </div>
+            >
+            </DebugData>
 
-                </div>
-                <div class ="flex-row">
-                    <div class="upload-file">
-                        <div class="editor-label">Image File</div>
-                        <input type="file" #inputFile (change)="onFileSelected(inputFile)"/>
-                        <input readonly [ngModel]="selectedFile && selectedFile.name"><button (click)="inputFile.click()">...</button>
-                        <button (click)="upload()">Upload</button>
-                    </div>
-                </div>
-            </li>
-            </ul>
 
         </div>
     </md-tab>

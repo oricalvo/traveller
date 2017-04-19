@@ -7,16 +7,19 @@ var _ = require("lodash");
 var AppState_1 = require("./AppState");
 exports.deviceActionTypes = {
     LOAD_DEVICES: "LOAD_DEVICES",
+    SELECT_DEVICE: "SELECT_DEVICE",
     LOADING_DEVICE_DATA: "LOADING_DEVICE_DATA",
     LOAD_DEVICE_DATA: "LOAD_DEVICE_DATA",
     SORT_DEVICES: "SORT_DEVICES",
     CLEAR_CURRENT_DEVICE: "CLEAR_CURRENT_DEVICE",
     SELECT_CURRENT_DEVICE: "SELECT_CURRENT_DEVICE",
     CHANGE_DEVICE_NAME: "CHANGE_DEVICE_NAME",
-    UPDATE_DEVICE_PROPS: "UPDATE_DEVICE_PROPS"
+    UPDATE_DEVICE_PROPS: "UPDATE_DEVICE_PROPS",
+    SELECT_DEVICE_THAT_HAS_NO_MANTIS_DEVICE: "SELECT_DEVICE_THAT_HAS_NO_MANTIS_DEVICE"
 };
 exports.initialState = {
     data: null,
+    selected: null,
 };
 exports.actions = {
     loadDevices: function (devices) {
@@ -25,11 +28,31 @@ exports.actions = {
             devices: devices,
         };
     },
+    selectDevice: function (device) {
+        return {
+            type: exports.deviceActionTypes.SELECT_DEVICE,
+            device: device,
+        };
+    },
+    selectDeviceThatHasNoMantisDevice: function (device) {
+        return {
+            type: exports.deviceActionTypes.SELECT_DEVICE_THAT_HAS_NO_MANTIS_DEVICE,
+            device: device,
+        };
+    }
 };
 function reducer(state, action) {
     if (state === void 0) { state = exports.initialState; }
     if (action.type == exports.deviceActionTypes.LOAD_DEVICES) {
         return Object.assign({}, state, { data: action.devices });
+    }
+    else if (action.type == exports.deviceActionTypes.SELECT_DEVICE) {
+        return Object.assign({}, state, { selected: action.device });
+    }
+    else if (action.type == exports.deviceActionTypes.SELECT_DEVICE_THAT_HAS_NO_MANTIS_DEVICE) {
+        var mantisDevice = { id: action.device.id, name: action.device.name };
+        var deviceClone = Object.assign({}, action.device, { mantisDevice: mantisDevice });
+        return Object.assign({}, state, { selected: deviceClone });
     }
     // else if(action.type == deviceActionTypes.LOADING_DEVICE_DATA) {
     //     return Object.assign({}, deviceDefaultState);

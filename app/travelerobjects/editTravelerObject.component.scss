@@ -1,0 +1,25 @@
+hr {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border: 0;
+  border-top: 4px solid #eee;
+}
+
+//Device Selects Style
+.select1{width:350px !important;}
+.select2{width:220px !important;}
+.select3{width:200px !important;}
+.select4{width:400px !important;}
+ul
+{
+  list-style-type: none;
+ background-color: #265a88;
+  color:white;
+  margin:0;
+  overflow:auto;
+}
+.tplistdisplay
+{
+  z-index: 50;
+  position:absolute;
+}

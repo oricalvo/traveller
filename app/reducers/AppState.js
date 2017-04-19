@@ -3,6 +3,10 @@ var FabricatorSortBy;
 (function (FabricatorSortBy) {
     FabricatorSortBy[FabricatorSortBy["name"] = 0] = "name";
 })(FabricatorSortBy = exports.FabricatorSortBy || (exports.FabricatorSortBy = {}));
+var TestProgramSortBy;
+(function (TestProgramSortBy) {
+    TestProgramSortBy[TestProgramSortBy["name"] = 0] = "name";
+})(TestProgramSortBy = exports.TestProgramSortBy || (exports.TestProgramSortBy = {}));
 var TechnologySortBy;
 (function (TechnologySortBy) {
     TechnologySortBy[TechnologySortBy["name"] = 0] = "name";
@@ -11,6 +15,10 @@ var PackageSortBy;
 (function (PackageSortBy) {
     PackageSortBy[PackageSortBy["name"] = 0] = "name";
 })(PackageSortBy = exports.PackageSortBy || (exports.PackageSortBy = {}));
+var BinSortBy;
+(function (BinSortBy) {
+    BinSortBy[BinSortBy["name"] = 0] = "name";
+})(BinSortBy = exports.BinSortBy || (exports.BinSortBy = {}));
 var DeviceSortBy;
 (function (DeviceSortBy) {
     DeviceSortBy[DeviceSortBy["name"] = 0] = "name";
@@ -29,6 +37,10 @@ var ImageSortBy;
 (function (ImageSortBy) {
     ImageSortBy[ImageSortBy["path"] = 0] = "path";
 })(ImageSortBy = exports.ImageSortBy || (exports.ImageSortBy = {}));
+var LotSortBy;
+(function (LotSortBy) {
+    LotSortBy[LotSortBy["name"] = 0] = "name";
+})(LotSortBy = exports.LotSortBy || (exports.LotSortBy = {}));
 var DebugDataSortBy;
 (function (DebugDataSortBy) {
     DebugDataSortBy[DebugDataSortBy["desc"] = 0] = "desc";

@@ -11,9 +11,24 @@ export interface Fabricator
 }
 export interface FabricatrsState{
     readonly data: Fabricator[]
+    readonly selected:Fabricator
 }
 
 export enum FabricatorSortBy {
+    name
+}
+export interface TestProgram
+{
+    readonly id: number;
+    readonly testProgramName: string;
+    readonly temperature: string;
+    readonly mantisTestProgram :TestProgram;
+}
+export interface TestProgramsState{
+    readonly data: TestProgram[]
+}
+
+export enum TestProgramSortBy {
     name
 }
 export interface Technology
@@ -45,6 +60,20 @@ export enum PackageSortBy {
     name
 }
 
+export interface Bin
+{
+    readonly id: number;
+    readonly name: string;
+
+}
+export interface BinsState{
+    readonly data: Bin[]
+    readonly selected:Bin;
+}
+
+export enum BinSortBy {
+    name
+}
 
 export enum DeviceSortBy {
     name,
@@ -56,10 +85,17 @@ export interface Device {
     readonly id: number;
     readonly name: string;
     readonly serial: string;
+    readonly lots: Lot[];
+    readonly technology:Technology;
+    readonly devicePackage:Package;
+    readonly deviceNickName:NickName;
+    readonly mantisDevice :Device;
+
 }
 
 export interface DevicesState {
     readonly data: Device[],
+    readonly selected:Device;
     // readonly sortBy: DeviceSortBy,
     // readonly isAscending: boolean,
     // readonly isLoading: boolean,
@@ -67,6 +103,18 @@ export interface DevicesState {
     // readonly currentDeviceId: number
 }
 
+export interface NickName{
+    readonly id: number;
+    readonly name: string;
+    readonly devices:Device[];
+    readonly testPrograms:TestProgram[];
+}
+
+export interface NickNamesState{
+    readonly data: NickName[];
+    readonly selected:NickName;
+
+}
 export interface Vendor{
     readonly id: number;
     readonly name: string;
@@ -112,6 +160,36 @@ export enum ImageSortBy {
     path
 }
 
+export interface StressData{
+    readonly id: number;
+    readonly name: string;
+    readonly oven_cycle_count:number;
+    readonly cycle_average_duration:number;
+    readonly dt_last_updated:number;
+
+
+}
+
+export interface StressDatasState{
+    readonly data: StressData[];
+}
+
+export interface Lot{
+    readonly id: number;
+    readonly name: string;
+    readonly lotDateCode : string;
+    readonly isProduction: string;
+    readonly mantisLot:Lot;
+}
+
+export interface LotsState{
+    readonly data: Lot[];
+    readonly selected:Lot;
+}
+
+export enum LotSortBy {
+    name
+}
 export interface DebugData{
     readonly id: number;
     readonly desc: string;
@@ -152,6 +230,7 @@ export interface StressTest{
     readonly comments:  string;
     readonly updateDate:  string; //Date
     readonly debugData: DebugData[];
+    readonly taskData: TaskData[];
     readonly vendorJob:vendorJob;
 }
 
@@ -165,6 +244,83 @@ export enum StressTestSortBy {
 
 }
 
+export interface TaskData{
+    readonly taskid: number;
+    readonly testProgramId:  TestProgram;
+
+}
+
+export interface TaskDatasState{
+    readonly data: TaskData[];
+}
+
+export interface LocationType{
+    readonly id: number;
+    readonly name:  string;
+
+}
+
+export interface  LocationTypesState{
+    readonly data: LocationType[];
+}
+export interface Location{
+    readonly id: number;
+    readonly name:  string;
+    readonly isExternal:string;
+    readonly locationType:LocationType;
+
+}
+
+export interface  LocationState{
+    readonly data: Location[];
+    readonly selected:Location;
+}
+
+export interface TravelerObject{
+    readonly id: number;
+    readonly name:string;
+    readonly totalDuration:number;
+    readonly jedecLevel:number;
+    readonly condition:string;
+    readonly comments:string;
+    readonly createdDate:string;///Date
+    readonly updatedDate:string;///Date
+    readonly updatedbyUser:number;
+    readonly assemblyLocation:Location;
+    readonly travdevice:Device;
+    readonly travlot:Lot;
+    readonly stressData:StressData;
+    readonly stressTests:StressTest[];
+    readonly travelerTestPrograms:TravelerTestProgram[];
+    readonly devicesByNickName:Device[];
+
+}
+
+export interface TravelerObjectsState{
+    readonly data: TravelerObject[];
+    readonly selected:TravelerObject;
+}
+
+
+export interface TravelerTestProgramPK{
+    readonly travelerId:number;
+    readonly testProgramId:number;
+}
+
+export interface TravelerTestProgram{
+    readonly testProgram: TestProgram;
+    readonly id:  number;
+    readonly expectedBin:Bin;
+    readonly  testLocation:Location;
+
+
+}
+
+export interface TestProgramTravelersState{
+    readonly data: TravelerTestProgram[];
+    readonly selected:TravelerTestProgram;
+}
+
 export interface AppState {
     readonly user: UserState;
     readonly devices: DevicesState;
@@ -176,4 +332,14 @@ export interface AppState {
     readonly fabricators:FabricatrsState;
     readonly technologys:TechnologysState;
     readonly packages:PackagesState;
+    readonly bins:BinsState;
+    readonly testprograms:TestProgramsState;
+    readonly lots:LotsState;
+    readonly taskdatas:TaskDatasState;
+    readonly stressdatas:StressDatasState;
+    readonly travelerobjects:TravelerObjectsState;
+    readonly nicknames:NickNamesState;
+    readonly testprogramtravelers:TestProgramTravelersState
+    readonly locations:LocationState;
+
 }

@@ -15,4 +15,20 @@ export class DevicesService {
             this.appStore.dispatch(actions.loadDevices(devices));
         });
     }
+    select(id: number) {
+        this.devicesWebApi.getDevice(id).then(device => {
+            this.appStore.dispatch(actions.selectDevice(device));
+        });
+    }
+    getDevicesByNickName(id: number) {
+        this.devicesWebApi.getDevicesByNickName(id).then(devices => {
+            this.appStore.dispatch(actions.loadDevices(devices));
+        });
+    }
+    getDeviceByName(name: string) {
+        this.devicesWebApi.getDeviceByName(name).then(device => {
+            this.appStore.dispatch(actions.selectDevice(device));
+        });
+    }
+
 }

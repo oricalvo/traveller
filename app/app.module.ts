@@ -21,7 +21,7 @@ import {DevicesNavComponent} from "./devices/nav.component";
 import {NullComponent} from "./components/null.component";
 import {DevicesListComponent} from "./devices/devicesList.component";
 import {DevicesService} from "./services/devices.service";
-import {DevicesWebApiMock} from "./mocks/devices.webapi.mock";
+import {DevicesWebApi} from "./webApis/devices.webapi";
 import {GridComponent} from "./grid/grid.component";
 import {AdminComponent} from "./admin/admin.component";
 import {EditDeviceComponent} from "./devices/editDevice.component";
@@ -29,6 +29,7 @@ import {EditDeviceComponent} from "./devices/editDevice.component";
 import {ImagesHomeComponent} from "./images/home.component";
 import {ImagesNavComponent} from "./images/nav.component";
 import {ImagesListComponent} from "./images/imagesList.component";
+import {ImageDebugDataListTestComponent} from "./images/imageDebugDataListTest.component";
 import {ImagesService} from "./services/images.service";
 import {ImagesWebApiMock} from "./mocks/images.webapi.mock";
 import {EditImageComponent} from "./images/editImage.component";
@@ -40,7 +41,9 @@ import {DebugDatasNavComponent} from "./Debugdatas/nav.component";
 import {DebugDatasListComponent} from "./Debugdatas/DebugDatasList.component";
 import {DebugDatasService} from "./services/DebugDatas.service";
 import {debugdatasWebApiMock} from "./mocks/debugdatas.webapi.mock";
+import {DebugDataComponent} from "./Debugdatas/DebugData.component"
 import {EditDebugDataComponent} from "./Debugdatas/editDebugData.component";
+
 
 import {StressTestHomeComponent} from "./StressTests/home.component";
 import {StressTestNavComponent} from "./StressTests/nav.component";
@@ -49,6 +52,7 @@ import {StressTestsWebApiMock} from "./mocks/stresstests.webapi.mock";
 import {EditStressTestComponent} from "./StressTests/editStressTest.component";
 import {DebugDataWebApi} from "./webApis/debugdatas.webapi";
 import {StressTestsWebApi} from "./webApis/stresstests.webapi";
+import {stresstestComponent} from "./StressTests/stresstest.component";
 
 import {StressTestService} from "./services/stresstests.service";
 import {ImagesWebApi} from "./webApis/images.webapi";
@@ -73,6 +77,21 @@ import {EditPackageComponent} from "./packages/editPackage.component";
 import {PackagesService} from "./services/packages.service";
 import {PackagesWebApi} from "./webApis/packages.webapi";
 
+import {TravelerObjectHomeComponent} from "./travelerobjects/home.component";
+import {TravelerObjectsNavComponent} from "./travelerobjects/nav.component";
+import {TravelerObjectsListComponent} from "./travelerobjects/TravelerObjectsList.component";
+import {EditTravelerObjectComponent} from "./travelerobjects/editTravelerObject.component";
+import {TravelerObjectsService} from "./services/travelerobjects.service";
+import {TravelerObjectsWebApi} from "./webApis/travelerobjects.webapi";
+
+
+import {BinHomeComponent} from "./bins/home.component";
+import {BinsNavComponent} from "./bins/nav.component";
+import {BinsListComponent} from "./bins/binsList.component";
+import {EditBinComponent} from "./bins/editBin.component";
+import {BinsService} from "./services/bins.service";
+import {BinsWebApi} from "./webApis/bins.webapi";
+
 
 import {VendorjobsHomeComponent} from "./vendorjobs/home.component";
 import {VendorjobsNavComponent} from "./vendorjobs/nav.component";
@@ -86,11 +105,35 @@ import {FabricatorsNavComponent} from "./fabricators/nav.component";
 import {FabricatorsListComponent} from "./fabricators/fabricatorsList.component";
 import {FabricatorsService} from "./services/fabricators.service";
 
+import {TestProgramsService} from "./services/testprograms.service";
+import {TestProgramsWebApi} from "./webApis/testprograms.webapi";
+
+import {NickNamesService} from "./services/nicknames.service";
+import {NickNamesWebApi} from "./webApis/nicknames.webapi";
+
+import {LotsService} from "./services/lots.service";
+import {LotsWebApi} from "./webApis/lots.webapi";
+
+
+import {TaskDatasService} from "./services/taskdatas.service";
+import {TaskDatasWebApi} from "./webApis/taskdatas.webapi";
+
+import {StressDatasService} from "./services/stressdatas.service";
+import {StressDatasWebApi} from "./webApis/stressdatas.webapi";
+
+import {LocationsService} from "./services/locations.service";
+import {LocationsWebApi} from "./webApis/locations.webapi";
+
+
+import {TestProgramTravelersService} from "./services/testprogramtravelers.service";
+
+
+
 require("node_modules/@angular/material/core/theming/prebuilt/indigo-pink.css!css");
 
 const webApis = [
     {provide: "loginWebApi", useClass: LoginWebApiMock},
-    {provide: "devicesWebApi", useClass: DevicesWebApiMock},
+     {provide: "devicesWebApi", useClass: DevicesWebApi},
    // {provide: "imagesWebApi", useClass: ImagesWebApiMock},
     {provide: "imagesWebApi", useClass: ImagesWebApi},
     //{ provide: "debugdatasWebApi", useClass: debugdatasWebApiMock },
@@ -100,7 +143,18 @@ const webApis = [
     {provide: "vendorjobsWebApi", useClass: VendorjobsWebApi},
     {provide: "fabricatorsWebApi", useClass: FabricatorsWebApi},
     {provide: "technologysWebApi", useClass: TechnologysWebApi},
-    {provide: "packagesWebApi", useClass: PackagesWebApi}
+    {provide: "packagesWebApi", useClass: PackagesWebApi},
+    {provide: "binsWebApi", useClass: BinsWebApi},
+    {provide: "testprogramsWebApi", useClass: TestProgramsWebApi},
+    {provide: "lotsWebApi", useClass: LotsWebApi},
+    {provide: "taskdatasWebApi", useClass: TaskDatasWebApi},
+    {provide: "stressdatasWebApi", useClass: StressDatasWebApi},
+    {provide: "travelerobjectsWebApi", useClass: TravelerObjectsWebApi},
+    {provide: "nicknamesWebApi", useClass: NickNamesWebApi},
+    {provide: "locationsWebApi" ,useClass:LocationsWebApi}
+
+
+
 ];
 
 @NgModule({
@@ -129,6 +183,7 @@ const webApis = [
         ImagesListComponent,
         EditImageComponent,
         ShowImageComponent,
+        ImageDebugDataListTestComponent,
 
         VendorHomeComponent,
         VendorsNavComponent,
@@ -144,6 +199,11 @@ const webApis = [
         PackagesListComponent,
         EditPackageComponent,
 
+        BinHomeComponent,
+        BinsNavComponent,
+        BinsListComponent,
+        EditBinComponent,
+
         FabricatorHomeComponent,
         FabricatorsNavComponent,
         FabricatorsListComponent,
@@ -156,11 +216,18 @@ const webApis = [
         DebugDatasNavComponent,
         DebugDatasListComponent,
         EditDebugDataComponent,
+        DebugDataComponent,
 
         StressTestHomeComponent,
         StressTestNavComponent,
         StressTestsListComponent,
-        EditStressTestComponent
+        EditStressTestComponent,
+        stresstestComponent,
+
+        TravelerObjectHomeComponent,
+        TravelerObjectsNavComponent,
+        TravelerObjectsListComponent,
+        EditTravelerObjectComponent,
     ],
     providers: [
         AppStore,
@@ -174,6 +241,15 @@ const webApis = [
         VendorjobsService,
         TechnologysService,
         PackagesService,
+        BinsService,
+        TestProgramsService,
+        LotsService,
+        TaskDatasService,
+        StressDatasService,
+        TravelerObjectsService,
+        NickNamesService,
+        TestProgramTravelersService,
+        LocationsService,
         ...webApis,
     ],
     bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 import {IDevicesWebApi} from "../webApis/devices.webapi";
 import {Device} from "../reducers/AppState";
-
+/*
 const devices: Device[] = require("./devices.json");
 
 export class DevicesWebApiMock implements IDevicesWebApi {
@@ -21,4 +21,4 @@ export class DevicesWebApiMock implements IDevicesWebApi {
             return device;
         });
     }
-}
+}*/

@@ -14,6 +14,16 @@ import {reducer as VendorsjobsReduce, initialState as VendorjobInitialState} fro
 import {reducer as FabricatorsReduce, initialState as FabricatorInitialState} from "../reducers/fabricators";
 import {reducer as TechnologysReduce, initialState as TechnologyInitialState} from "../reducers/technologys";
 import {reducer as PackgessReduce, initialState as PackageInitialState} from "../reducers/packages";
+import {reducer as BinssReduce, initialState as BinInitialState} from "../reducers/bins";
+import {reducer as LocationsReduce, initialState as LocationInitialState} from "../reducers/locations";
+import {reducer as TestprogramsReduce, initialState as TestprogramInitialState} from "../reducers/testprograms";
+import {reducer as lotsReduce, initialState as LotInitialState} from "../reducers/lots";
+import {reducer as TaskDatasReduce, initialState as TaskdataInitialState} from "../reducers/taskdatas";
+import {reducer as StressDatasReduce, initialState as StressdataInitialState} from "../reducers/stressdatas";
+import {reducer as TravelerobjectsReduce, initialState as TravelerobjectInitialState} from "../reducers/travelerobjects";
+import {reducer as NickNamesReduce, initialState as NickNameInitialState} from "../reducers/nicknames";
+import {reducer as TestProgramTravelersReduce, initialState as TestProgramTravelerInitialState} from "../reducers/testprogramtravelers";
+
 
 
 export class AppStore {
@@ -34,7 +44,16 @@ export class AppStore {
             vendorjobs:VendorjobInitialState,
             fabricators:FabricatorInitialState,
             technologys:TechnologyInitialState,
-            packages:PackageInitialState
+            packages:PackageInitialState,
+            bins:BinInitialState,
+            testprograms:TestprogramInitialState,
+            lots:LotInitialState,
+            taskdatas:TaskdataInitialState,
+            stressdatas:StressdataInitialState,
+            travelerobjects:TravelerobjectInitialState,
+            nicknames:NickNameInitialState,
+            testprogramtravelers:TestProgramTravelerInitialState,
+            locations:LocationInitialState
 
         };
 
@@ -48,7 +67,16 @@ export class AppStore {
             vendorjobs:VendorsjobsReduce,
             fabricators:FabricatorsReduce,
             technologys:TechnologysReduce,
-            packages:PackgessReduce
+            packages:PackgessReduce,
+            bins:BinssReduce,
+            testprograms:TestprogramsReduce,
+            lots:lotsReduce,
+            taskdatas:TaskDatasReduce,
+            stressdatas:StressDatasReduce,
+            travelerobjects:TravelerobjectsReduce,
+            nicknames:NickNamesReduce,
+            testprogramtravelers:TestProgramTravelersReduce,
+            locations:LocationsReduce,
         });
 
         this.store = createStore(root, initialState);

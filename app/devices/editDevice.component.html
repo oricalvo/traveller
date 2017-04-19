@@ -1,1 +1,9 @@
 <h1>Edit Device</h1>
+<ul>
+    {{Device?.devicePackage.name}}
+    {{Device?.technology.name}}
+    <li *ngFor="let lot of Device?.lots, let i=index">
+        <span>{{lot?.id}}</span><span>{{lot?.name}}</span>
+
+    </li>
+</ul>

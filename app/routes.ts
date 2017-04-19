@@ -1,25 +1,28 @@
-import {ImagesHomeComponent} from "./images/home.component";
-import {ImagesListComponent} from "./images/imagesList.component";
-import {EditImageComponent} from "./images/editImage.component";
-
 import {DevicesHomeComponent} from "./devices/home.component";
+import {AppComponent} from "./layout/app.component";
+import {NullComponent} from "./components/null.component";
 import {DevicesListComponent} from "./devices/devicesList.component";
+import {AdminComponent} from "./admin/admin.component";
 import {EditDeviceComponent} from "./devices/editDevice.component";
 
 import {DebugDatasHomeComponent} from "./Debugdatas/home.component";
 import {DebugDatasListComponent} from "./Debugdatas/DebugDatasList.component";
 import {EditDebugDataComponent} from "./Debugdatas/editDebugData.component";
+import {DebugDataComponent} from "./Debugdatas/DebugData.component";
 
 import {StressTestHomeComponent} from "./StressTests/home.component";
 import {StressTestsListComponent} from "./StressTests/StressTestsList.component";
 import {EditStressTestComponent} from "./StressTests/editStressTest.component";
 
+import {TravelerObjectHomeComponent} from "./travelerobjects/home.component";
+import {TravelerObjectsListComponent} from "./travelerobjects/TravelerObjectsList.component";
+import {EditTravelerObjectComponent} from "./travelerobjects/editTravelerObject.component";
+//import {ShowImageComponent} from "./travelerobjects/showImage.component";
 
-
-import {AppComponent} from "./layout/app.component";
-import {NullComponent} from "./components/null.component";
-import {AdminComponent} from "./admin/admin.component";
-
+import {ImagesHomeComponent} from "./images/home.component";
+import {ImagesListComponent} from "./images/imagesList.component";
+import {EditImageComponent} from "./images/editImage.component";
+import {ShowImageComponent} from "./images/showImage.component";
 
 import {VendorHomeComponent} from "./vendors/home.component";
 import {VendorsListComponent} from "./vendors/vendorsList.component";
@@ -38,6 +41,11 @@ import {PackageHomeComponent} from "./packages/home.component";
 import {PackagesListComponent} from "./packages/packagesList.component";
 import {EditPackageComponent} from "./packages/editPackage.component";
 
+import {BinHomeComponent} from "./bins/home.component";
+import {BinsListComponent} from "./bins/binsList.component"
+import {EditBinComponent} from "./bins/editBin.component";
+
+
 export const routes = [
     { path: '', component: NullComponent },
     {
@@ -54,6 +62,17 @@ export const routes = [
         children: [
             { path: '', component: ImagesListComponent },
             { path: 'edit/:id', component: EditImageComponent },
+            { path: 'show/:id', component: ShowImageComponent },
+        ]
+
+    },
+    {
+        path: 'travelerobjects',
+        component: TravelerObjectHomeComponent,
+        children: [
+            { path: '', component: TravelerObjectsListComponent },
+            { path: 'edit/:id', component: EditTravelerObjectComponent },
+
         ]
 
     },
@@ -107,11 +126,22 @@ export const routes = [
 
     },
     {
+        path: 'bins',
+        component: BinHomeComponent,
+        children: [
+            { path: '', component: BinsListComponent},
+            { path: 'edit/:id', component: EditBinComponent},
+
+        ]
+
+    },
+    {
         path: 'debugdatas',
         component: DebugDatasHomeComponent,
         children: [
             { path: '', component: DebugDatasListComponent },
             { path: 'edit/:id', component: EditDebugDataComponent },
+            { path: 'editTest/:id', component: DebugDataComponent },
         ]
     },
     {

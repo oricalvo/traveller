@@ -1,0 +1,9 @@
+<marvell-grid
+        [columns]="columns"
+        [rows]="travelerobjects"
+        [showDeleteButton]="true"
+        [showEditButton]="true"
+        [showIconButton]="false"
+        (deletingRow)="onDeletingRow($event)"
+        (editingRow)="onEditingRow($event)">
+</marvell-grid>
