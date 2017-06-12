@@ -16,19 +16,18 @@ import {Router, ActivatedRoute} from "@angular/router";
     styles: [require("./fabricatorsList.component.css")],
 })
 export class FabricatorsListComponent {
-    columns: GridColumn[];
-    fabricators: Fabricator[];
 
+    fabricators: Fabricator[];
+    NewFabricatorName:string;
+    searchtxt:string;
+    FabricatorTemp:Fabricator[];
     constructor(private fabricatorsService: FabricatorsService,
                 private appStore: AppStore,
                 private route: ActivatedRoute,
                 private router: Router){
-        this.columns = [
-            {title: "ID", field: "id"},
-            {title: "Name", field: "name"},
+        this.NewFabricatorName="";
+        this.searchtxt="";
 
-
-        ]
     }
 
     //we don't load heavy data in constructor we use Init function for heavy data loading
@@ -40,17 +39,18 @@ export class FabricatorsListComponent {
         this.fabricatorsService.loadAll();
     }
 
-    onEditingRow(row){
-        console.log("Edit", row);
+    onFabricatorAdd(name)
+    {
+        const fabricator ={id:-1,name:name}
+        this.fabricatorsService.save(fabricator)
+        this.FabricatorTemp =[];
+        this.fabricators=this.FabricatorTemp.concat(this.fabricators);
 
-        this.router.navigate(["/fabricators/edit", row.id]);
     }
-
-    onDeletingRow(row){
-        console.log("Delete", row);
-    }
-    onShowFabricator(row){
-        console.log("fabricator", row);
-       this.router.navigate(["/fabricators/show", row.id]);
+    onFabricatorSave(fabricator)
+    {
+        this.fabricatorsService.update(fabricator) ;
+        this.FabricatorTemp =[];
+        this.fabricators=this.FabricatorTemp.concat(this.fabricators);
     }
 }

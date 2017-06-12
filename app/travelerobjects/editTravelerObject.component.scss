@@ -10,7 +10,7 @@ hr {
 .select2{width:220px !important;}
 .select3{width:200px !important;}
 .select4{width:400px !important;}
-ul
+.TestProgramUL
 {
   list-style-type: none;
  background-color: #265a88;
@@ -23,3 +23,16 @@ ul
   z-index: 50;
   position:absolute;
 }
+.stresslist {list-style-type: none !important;padding:0px}
+.TPTList {list-style-type: none !important;padding:0px}
+.stresstest
+{
+
+  border-bottom-color: thistle;
+  border-bottom-style: solid;
+  border-top-color: thistle;
+  border-top-style: solid;
+}
+.StressAddIcon
+{  font-size: 36px;  }
+.StressDeleteIcon{ font-size: 48px;}

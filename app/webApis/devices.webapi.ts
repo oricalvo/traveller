@@ -12,6 +12,8 @@ export interface IDevicesWebApi {
     getDevice(id: number): Promise<Device>;
     getDevicesByNickName(id:number):Promise<Device[]>;
     getDeviceByName(name: string): Promise<Device>;
+    getTravelerDevices(): Promise<Device[]>
+    updateBin(Device:Device): Promise<Device>
 }
 @Injectable()
 export class DevicesWebApi implements IDevicesWebApi {
@@ -24,6 +26,10 @@ export class DevicesWebApi implements IDevicesWebApi {
 
     }
 
+    getTravelerDevices(): Promise<Device[]> {
+        return this.http.get("/api/device/travelerDevices/").map(res => res.json()).toPromise();
+
+    }
     getDevice(id: number): Promise<Device> {
         if(!id){
             throw new Error("Missing id parameter");
@@ -41,6 +47,9 @@ export class DevicesWebApi implements IDevicesWebApi {
         }
 
         return this.http.get("/api/device/GetByName/" + name).map(res => res.json()).toPromise();
+    }
+    updateBin(Device:Device): Promise<Device>{
+        return this.http.post("/api/device/update/",Device).map(res => res.json()).toPromise();
     }
 
 

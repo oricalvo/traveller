@@ -15,6 +15,11 @@ export class DevicesService {
             this.appStore.dispatch(actions.loadDevices(devices));
         });
     }
+    loadAllTravelerDevices() {
+        this.devicesWebApi.getTravelerDevices().then(devices => {
+            this.appStore.dispatch(actions.loadDevices(devices));
+        });
+    }
     select(id: number) {
         this.devicesWebApi.getDevice(id).then(device => {
             this.appStore.dispatch(actions.selectDevice(device));
@@ -28,6 +33,12 @@ export class DevicesService {
     getDeviceByName(name: string) {
         this.devicesWebApi.getDeviceByName(name).then(device => {
             this.appStore.dispatch(actions.selectDevice(device));
+        });
+    }
+    updateDevice(Device:Device){
+        this.devicesWebApi.updateBin(Device).then(device=>{
+            this.appStore.dispatch(actions.selectDevice(device));
+
         });
     }
 

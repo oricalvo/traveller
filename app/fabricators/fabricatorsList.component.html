@@ -1,10 +1,25 @@
-<marvell-grid
-        [columns]="columns"
-        [rows]="fabricators"
-        [showDeleteButton]="true"
-        [showEditButton]="true"
+<br><br>
+<div style="float: left">
 
-        (deletingRow)="onDeletingRow($event)"
-        (editingRow)="onEditingRow($event)"
-       >
-</marvell-grid>
+
+       <label>Fabricator Name</label><br><input  [(ngModel)]="NewFabricatorName" placeholder="insert new fabricator name..."> <md-icon class="StressAddIcon" (click)="onFabricatorAdd(NewFabricatorName)">add_box</md-icon>
+</div>
+
+<div style="clear: both"></div>
+<br>
+<hr>
+<br>
+<div style="float: left">
+       <label>Filter</label>  <input [(ngModel)]="searchtxt" placeholder="key word..."/>
+       <br><br>
+
+       <ul class="FabricatorList">
+              <label>Name</label><br>
+              <li  *ngFor="let Fabricator of fabricators| searchfilter: 'name' : searchtxt, let z=index">
+                     <div >
+
+                            <input  [(ngModel)]="Fabricator.name"> <md-icon class="StressAddIcon" (click)="onFabricatorSave(Fabricator)">save</md-icon>
+                     </div>
+              </li>
+       </ul>
+</div>

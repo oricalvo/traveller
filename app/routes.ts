@@ -45,6 +45,8 @@ import {BinHomeComponent} from "./bins/home.component";
 import {BinsListComponent} from "./bins/binsList.component"
 import {EditBinComponent} from "./bins/editBin.component";
 
+import {AdminMenuComponent} from "./Menus/AdminMenu";
+import {MenusHomeComponent} from "./Menus/home.component";
 
 export const routes = [
     { path: '', component: NullComponent },
@@ -54,6 +56,14 @@ export const routes = [
         children: [
             { path: '', component: DevicesListComponent },
             { path: 'edit/:id', component: EditDeviceComponent },
+        ]
+    },
+    {
+        path: 'menus',
+        component: MenusHomeComponent,
+        children: [
+            { path: 'admin', component: AdminMenuComponent },
+
         ]
     },
     {

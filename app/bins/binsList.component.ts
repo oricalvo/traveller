@@ -16,21 +16,18 @@ import {Router, ActivatedRoute} from "@angular/router";
     styles: [require("./binsList.component.css")],
 })
 export class BinsListComponent {
-    columns: GridColumn[];
+
     bins: Bin[];
+    NewBinName:string;
+    searchtxt:string;
+    BinTemp:Bin[];
 
     constructor(private binsService: BinsService,
                 private appStore: AppStore,
                 private route: ActivatedRoute,
                 private router: Router){
-        this.columns = [
-            {title: "ID", field: "id"},
-            {title: "Name", field: "name"},
-            {title: "Name", field: "fabricator.name"},
-
-
-
-        ]
+        this.NewBinName="";
+        this.searchtxt="";
     }
 
     //we don't load heavy data in constructor we use Init function for heavy data loading
@@ -42,17 +39,18 @@ export class BinsListComponent {
         this.binsService.loadAll();
     }
 
-    onEditingRow(row){
-        console.log("Edit", row);
+    onBinAdd(name)
+    {
+        const Bin ={id:-1,name:name}
+        this.binsService.save(Bin)
+        this.BinTemp=[];
+        this.bins=this.BinTemp.concat(this.bins);
 
-        this.router.navigate(["/bins/edit", row.id]);
     }
-
-    onDeletingRow(row){
-        console.log("Delete", row);
-    }
-    onShowBin(row){
-        console.log("bin", row);
-       this.router.navigate(["/bins/show", row.id]);
+    onBinSave(Bin)
+    {
+        this.binsService.update(Bin) ;
+        this.BinTemp=[];
+        this.bins=this.BinTemp.concat(this.bins);
     }
 }

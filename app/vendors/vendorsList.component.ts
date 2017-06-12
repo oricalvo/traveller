@@ -16,19 +16,18 @@ import {Router, ActivatedRoute} from "@angular/router";
     styles: [require("./vendorsList.component.css")],
 })
 export class VendorsListComponent {
-    columns: GridColumn[];
+
     vendors: Vendor[];
+    NewVendorName:string;
+    searchtxt:string;
+    VendorTemp:Vendor[];
 
     constructor(private vendorsService: VendorsService,
                 private appStore: AppStore,
                 private route: ActivatedRoute,
                 private router: Router){
-        this.columns = [
-            {title: "ID", field: "id"},
-            {title: "Name", field: "name"},
-
-
-        ]
+        this.NewVendorName="";
+        this.searchtxt="";
     }
 
     //we don't load heavy data in constructor we use Init function for heavy data loading
@@ -46,11 +45,17 @@ export class VendorsListComponent {
         this.router.navigate(["/vendors/edit", row.id]);
     }
 
-    onDeletingRow(row){
-        console.log("Delete", row);
+    onVendorAdd(name)
+    {
+        const Vendor ={id:-1,name:name}
+        this.vendorsService.save(Vendor)
+        this.VendorTemp=[];
+        this.vendors=this.VendorTemp.concat(this.vendors);
     }
-    onShowVendor(row){
-        console.log("vendor", row);
-       this.router.navigate(["/vendors/show", row.id]);
+    onVendorSave(Vendor)
+    {
+        this.vendorsService.update(Vendor) ;
+        this.VendorTemp=[];
+        this.vendors=this.VendorTemp.concat(this.vendors);
     }
 }

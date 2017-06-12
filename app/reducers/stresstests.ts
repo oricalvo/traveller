@@ -10,7 +10,6 @@ import {StressTestSortBy} from "./AppState";
 export const stresstestActionTypes= {
     LOAD_STRESSTEST: "LOAD_STRESSTEST",
     SELECT_STRESSTEST: "SELECT_STRESSTEST",
-
 };
 export const initialState: StressTestState = {
     data: null,

@@ -1,10 +1,25 @@
-<marvell-grid
-        [columns]="columns"
-        [rows]="packages"
-        [showDeleteButton]="true"
-        [showEditButton]="true"
+<br><br>
+<div style="float: left">
 
-        (deletingRow)="onDeletingRow($event)"
-        (editingRow)="onEditingRow($event)"
-       >
-</marvell-grid>
+
+       <label>Package Name</label><br><input  [(ngModel)]="NewPackageName" placeholder="insert new package name..."> <md-icon class="StressAddIcon" (click)="onPackageAdd(NewPackageName)">add_box</md-icon>
+</div>
+
+<div style="clear: both"></div>
+<br>
+<hr>
+<br>
+<div style="float: left">
+       <label>Filter</label>  <input [(ngModel)]="searchtxt" placeholder="key word..."/>
+<br><br>
+
+<ul class="PackageList">
+       <label>Name</label><br>
+       <li  *ngFor="let Package of packages| searchfilter: 'name' : searchtxt, let z=index">
+              <div >
+
+                     <input  [(ngModel)]="Package.name"> <md-icon class="StressAddIcon" (click)="onPackageSave(Package)">save</md-icon>
+              </div>
+       </li>
+</ul>
+</div>

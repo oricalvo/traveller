@@ -22,7 +22,10 @@ import {reducer as TaskDatasReduce, initialState as TaskdataInitialState} from "
 import {reducer as StressDatasReduce, initialState as StressdataInitialState} from "../reducers/stressdatas";
 import {reducer as TravelerobjectsReduce, initialState as TravelerobjectInitialState} from "../reducers/travelerobjects";
 import {reducer as NickNamesReduce, initialState as NickNameInitialState} from "../reducers/nicknames";
+import {reducer as TemporaryIDsReduce, initialState as TemporaryIDsInitialState} from "../reducers/temporaryIDs";
 import {reducer as TestProgramTravelersReduce, initialState as TestProgramTravelerInitialState} from "../reducers/testprogramtravelers";
+
+
 
 
 
@@ -53,7 +56,9 @@ export class AppStore {
             travelerobjects:TravelerobjectInitialState,
             nicknames:NickNameInitialState,
             testprogramtravelers:TestProgramTravelerInitialState,
-            locations:LocationInitialState
+            locations:LocationInitialState,
+            temporaryIDs:TemporaryIDsInitialState,
+
 
         };
 
@@ -77,6 +82,8 @@ export class AppStore {
             nicknames:NickNamesReduce,
             testprogramtravelers:TestProgramTravelersReduce,
             locations:LocationsReduce,
+            temporaryIDs:TemporaryIDsReduce,
+
         });
 
         this.store = createStore(root, initialState);

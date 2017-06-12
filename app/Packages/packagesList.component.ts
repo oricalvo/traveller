@@ -9,28 +9,28 @@ import {AppStore} from "../services/appStore";
 import {Package} from "../reducers/AppState";
 import {GridColumn} from "../grid/grid.component";
 import {Router, ActivatedRoute} from "@angular/router";
+import {SearchFilterPipe} from "../Filters/Pipe"
 
 @Component({
     selector: 'packages-list',
     template: require("./packagesList.component.html"),
     styles: [require("./packagesList.component.css")],
+
 })
 export class PackagesListComponent {
-    columns: GridColumn[];
+
     packages: Package[];
+    NewPackageName:string;
+    searchtxt:string;
+    PackageTemp:Package[];
 
     constructor(private packagesService: PackagesService,
                 private appStore: AppStore,
                 private route: ActivatedRoute,
                 private router: Router){
-        this.columns = [
-            {title: "ID", field: "id"},
-            {title: "Name", field: "name"},
-            {title: "Name", field: "fabricator.name"},
+        this.NewPackageName="";
+        this.searchtxt="";
 
-
-
-        ]
     }
 
     //we don't load heavy data in constructor we use Init function for heavy data loading
@@ -42,17 +42,17 @@ export class PackagesListComponent {
         this.packagesService.loadAll();
     }
 
-    onEditingRow(row){
-        console.log("Edit", row);
-
-        this.router.navigate(["/packages/edit", row.id]);
+    onPackageAdd(name)
+    {
+        const pacKage ={id:-1,name:name}
+        this.packagesService.save(pacKage);
+        this.PackageTemp=[];
+        this.packages=this.PackageTemp.concat(this.packages);
     }
-
-    onDeletingRow(row){
-        console.log("Delete", row);
-    }
-    onShowPackage(row){
-        console.log("package", row);
-       this.router.navigate(["/packages/show", row.id]);
+    onPackageSave(pacKage)
+    {
+        this.packagesService.update(pacKage) ;
+        this.PackageTemp=[];
+        this.packages=this.PackageTemp.concat(this.packages);
     }
 }

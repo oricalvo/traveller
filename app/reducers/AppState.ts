@@ -134,7 +134,7 @@ export interface vendorJob{
     readonly approvalDate:string;
     readonly comments:string;
     readonly dtUpdated:string;
-    readonly vendor :Vendor;
+    vendor ?:Vendor;
 
 }
 
@@ -147,13 +147,13 @@ export enum vendorJobSortBy {
 }
 
 
-export interface Image{
+export interface image{
     readonly id: number;
     readonly path: string;
 }
 
 export interface ImagesState{
-    readonly data: Image[];
+    readonly data: image[];
 }
 
 export enum ImageSortBy {
@@ -193,7 +193,7 @@ export enum LotSortBy {
 export interface DebugData{
     readonly id: number;
     readonly desc: string;
-    readonly images: Image[];
+    readonly images: image[];
 }
 
 export interface DebugDataState{
@@ -232,6 +232,7 @@ export interface StressTest{
     readonly debugData: DebugData[];
     readonly taskData: TaskData[];
     readonly vendorJob:vendorJob;
+
 }
 
 export interface StressTestState{
@@ -273,7 +274,13 @@ export interface Location{
 
 export interface  LocationState{
     readonly data: Location[];
-    readonly selected:Location;
+    readonly stressLocations :Location[];
+    readonly assemblyLocations :Location[]
+    readonly testLocations :Location[];
+
+    readonly selectedstressLocation:Location;
+    readonly selectedassemblyLocation:Location;
+    readonly selectedTestLocation:Location;
 }
 
 export interface TravelerObject{
@@ -312,6 +319,8 @@ export interface TravelerTestProgram{
     readonly id:  number;
     readonly expectedBin:Bin;
     readonly  testLocation:Location;
+    selected:boolean;
+
 
 
 }
@@ -320,6 +329,16 @@ export interface TestProgramTravelersState{
     readonly data: TravelerTestProgram[];
     readonly selected:TravelerTestProgram;
 }
+
+export interface TemporaryIDsState{
+    readonly StressTestTemporaryID:number;
+    readonly DebugDataTemporaryID:number;
+    readonly ImageTemporaryID:number;
+    readonly VendorJobTemporaryID:number;
+
+}
+
+
 
 export interface AppState {
     readonly user: UserState;
@@ -341,5 +360,7 @@ export interface AppState {
     readonly nicknames:NickNamesState;
     readonly testprogramtravelers:TestProgramTravelersState
     readonly locations:LocationState;
+    readonly temporaryIDs:TemporaryIDsState;
+
 
 }

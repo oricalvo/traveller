@@ -1,10 +1,33 @@
-<marvell-grid
-        [columns]="columns"
-        [rows]="technologys"
-        [showDeleteButton]="true"
-        [showEditButton]="true"
+<br><br>
+<div style="float: left">
 
-        (deletingRow)="onDeletingRow($event)"
-        (editingRow)="onEditingRow($event)"
-       >
-</marvell-grid>
+
+       <label>Technology Name</label><br><input  [(ngModel)]="NewTechnologyName" placeholder="insert new Technology name...">
+       <select class="btn btn-info" [ngModel]="fabricatorSelected?.id" (ngModelChange)="onFabricatorChange($event)" style="width:100px" >
+              <option *ngFor="let t of fabricatorList" [ngValue]="t?.id">{{t?.name}}</option>
+       </select>
+       <md-icon class="StressAddIcon" (click)="onTechnologyAdd(NewTechnologyName,fabricatorSelected.id)">add_box</md-icon>
+</div>
+
+<div style="clear: both"></div>
+<br>
+<hr>
+<br>
+<div style="float: left">
+       <label>Filter</label>  <input [(ngModel)]="searchtxt" placeholder="key word..."/>
+       <br><br>
+
+       <ul class="TechnologyList">
+              <label>Name</label><br>
+              <li  *ngFor="let Technology of technologys| searchfilter: 'name' : searchtxt, let z=index">
+                     <div >
+
+                            <input  [(ngModel)]="Technology.name">
+                            <select class="btn btn-info" [ngModel]="Technology.fabricator?.id" (ngModelChange)="onFabricatorChange2($event,Technology)" style="width:100px" >
+                                   <option *ngFor="let t of fabricatorList" [ngValue]="t?.id">{{t?.name}}</option>
+                            </select>
+                            <md-icon class="StressAddIcon" (click)="onTechnologyUpdate(Technology)">save</md-icon>
+                     </div>
+              </li>
+       </ul>
+</div>

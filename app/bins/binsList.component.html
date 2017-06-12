@@ -1,10 +1,25 @@
-<marvell-grid
-        [columns]="columns"
-        [rows]="bins"
-        [showDeleteButton]="true"
-        [showEditButton]="true"
+<br><br>
+<div style="float: left">
 
-        (deletingRow)="onDeletingRow($event)"
-        (editingRow)="onEditingRow($event)"
-       >
-</marvell-grid>
+
+       <label>Bin Name</label><br><input  [(ngModel)]="NewBinName" placeholder="insert new bin name..."> <md-icon class="StressAddIcon" (click)="onBinAdd(NewBinName)">add_box</md-icon>
+</div>
+
+<div style="clear: both"></div>
+<br>
+<hr>
+<br>
+<div style="float: left">
+       <label>Filter</label>  <input [(ngModel)]="searchtxt" placeholder="key word..."/>
+       <br><br>
+
+       <ul class="BinList">
+              <label>Name</label><br>
+              <li  *ngFor="let Bin of bins| searchfilter: 'name' : searchtxt, let z=index">
+                     <div >
+
+                            <input  [(ngModel)]="Bin.name"> <md-icon class="StressAddIcon" (click)="onBinSave(Bin)">save</md-icon>
+                     </div>
+              </li>
+       </ul>
+</div>

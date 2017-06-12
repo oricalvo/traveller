@@ -31,7 +31,7 @@ import {ImagesNavComponent} from "./images/nav.component";
 import {ImagesListComponent} from "./images/imagesList.component";
 import {ImageDebugDataListTestComponent} from "./images/imageDebugDataListTest.component";
 import {ImagesService} from "./services/images.service";
-import {ImagesWebApiMock} from "./mocks/images.webapi.mock";
+//import {ImagesWebApiMock} from "./mocks/images.webapi.mock";
 import {EditImageComponent} from "./images/editImage.component";
 import {ShowImageComponent} from "./images/showImage.component";
 
@@ -44,6 +44,7 @@ import {debugdatasWebApiMock} from "./mocks/debugdatas.webapi.mock";
 import {DebugDataComponent} from "./Debugdatas/DebugData.component"
 import {EditDebugDataComponent} from "./Debugdatas/editDebugData.component";
 
+import {ImageComponent} from "./images/TravelerImage.component";
 
 import {StressTestHomeComponent} from "./StressTests/home.component";
 import {StressTestNavComponent} from "./StressTests/nav.component";
@@ -126,8 +127,13 @@ import {LocationsWebApi} from "./webApis/locations.webapi";
 
 
 import {TestProgramTravelersService} from "./services/testprogramtravelers.service";
+import {TestProgramsTravelerWebApi} from "./webApis/testprogramtraveler.webapi";
+import {SearchFilterPipe} from "./Filters/Pipe";
+import {FilterTecnologies} from "./Filters/FilterTecnologies";
+import {FilterDevice} from "./Filters/FilterDevices";
 
-
+import {AdminMenuComponent} from "./Menus/AdminMenu";
+import {MenusHomeComponent} from "./Menus/home.component";
 
 require("node_modules/@angular/material/core/theming/prebuilt/indigo-pink.css!css");
 
@@ -151,7 +157,8 @@ const webApis = [
     {provide: "stressdatasWebApi", useClass: StressDatasWebApi},
     {provide: "travelerobjectsWebApi", useClass: TravelerObjectsWebApi},
     {provide: "nicknamesWebApi", useClass: NickNamesWebApi},
-    {provide: "locationsWebApi" ,useClass:LocationsWebApi}
+    {provide: "locationsWebApi" ,useClass:LocationsWebApi},
+    {provide: "testprogramtravelerWebApi" ,useClass:TestProgramsTravelerWebApi}
 
 
 
@@ -170,6 +177,12 @@ const webApis = [
         HeaderComponent,
         MainComponent,
         FooterComponent,
+        AdminMenuComponent,
+        MenusHomeComponent,
+
+        SearchFilterPipe,
+        FilterTecnologies,
+        FilterDevice,
         LoginStatusComponent,
         DevicesHomeComponent,
         DevicesNavComponent,
@@ -184,6 +197,7 @@ const webApis = [
         EditImageComponent,
         ShowImageComponent,
         ImageDebugDataListTestComponent,
+        ImageComponent,
 
         VendorHomeComponent,
         VendorsNavComponent,

@@ -1,9 +1,34 @@
-<marvell-grid
-        [columns]="columns"
-        [rows]="devices"
-        [showDeleteButton]="true"
-        [showEditButton]="true"
-        [showIconButton]="false"
-        (deletingRow)="onDeletingRow($event)"
-        (editingRow)="onEditingRow($event)">
-</marvell-grid>
+<br><br>
+
+<div style="clear: both"></div>
+<br>
+<hr>
+<br>
+<div style="float: left">
+    <label>Filter</label>  <input [(ngModel)]="searchtxt" placeholder="key word..."/>
+    <br><br>
+
+    <ul class="DeviceList">
+        <label>Name</label><br>
+        <li  *ngFor="let Device of devices| FilterDevice: 'name' : searchtxt :filteredCount, let z=index">
+            <div style="float:left;width: 250px" >
+                {{Device.name}}
+            </div>
+            &nbsp;&nbsp;
+
+            <div *ngIf="filteredCount.count<30" style="float:left">
+            <select class="btn btn-info" [ngModel]="Device.devicePackage?.id" (ngModelChange)="onPackageChange($event,Device.id)" style="width:100px" >
+                <option *ngFor="let t of packageList" [ngValue]="t?.id">{{t?.name}}</option>
+            </select>
+            <select class="btn btn-info" [ngModel]="Device.technology.fabricator?.id" (ngModelChange)="onFabricatorChange($event,Device.id)" style="width:100px" >
+                <option *ngFor="let t of fabricatorList" [ngValue]="t?.id">{{t?.name}}</option>
+            </select>
+            <select class="btn btn-info" [ngModel]="Device.technology?.id" (ngModelChange)="onTechnolgyChange($event,Device.id)" style="width:100px" >
+                <option *ngFor="let t of technologyList|FilterTecnologies:Device.technology.fabricator:Device.technology.name" [ngValue]="t?.id">{{t?.name}}</option>
+            </select>
+                <md-icon class="StressAddIcon" (click)="onDeviceSave(Device)">save</md-icon>
+            </div>
+
+        </li>
+    </ul>
+</div>

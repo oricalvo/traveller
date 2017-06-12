@@ -6,7 +6,7 @@ import "zone.js";
 import { Component } from '@angular/core';
 import {ImagesService} from "../services/images.service";
 import {AppStore} from "../services/appStore";
-import {Image} from "../reducers/AppState";
+import {image} from "../reducers/AppState";
 import {GridColumn} from "../grid/grid.component";
 import {Router, ActivatedRoute} from "@angular/router";
 
@@ -17,7 +17,7 @@ import {Router, ActivatedRoute} from "@angular/router";
 })
 export class ImagesListComponent {
     columns: GridColumn[];
-    images: Image[];
+    images: image[];
 
     constructor(private imagesService: ImagesService,
                 private appStore: AppStore,

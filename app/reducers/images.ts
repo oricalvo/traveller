@@ -4,7 +4,7 @@
 import * as _ from "lodash";
 import Action = Redux.Action;
 import {Http, Response} from "@angular/http";
-import {ImagesState, Image} from "./AppState";
+import {ImagesState, image} from "./AppState";
 import {ImageSortBy} from "./AppState";
 
 export const imageActionTypes= {
@@ -22,7 +22,7 @@ export const initialState = {
 };
 
 export const actions = {
-    loadImages: function(images: Image[]) {
+    loadImages: function(images: image[]) {
         return {
             type: imageActionTypes.LOAD_IMAGES,
             images: images,
