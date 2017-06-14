@@ -1,4 +1,62 @@
-<marvell-grid
+<div class="row">
+
+
+
+    <div class="col-sm-2 col-lg-3 " >
+        <label>NickName</label><br>
+        <select class="btn btn-primary select1" md-select [ngModel]="TravelerSearch.NickName?.id" (ngModelChange)="onNicNameChange($event)" style="width:100px" >
+
+            <option md-option *ngFor="let v of nicknamesList" [ngValue]="v?.id">{{v?.name}}</option>
+        </select>
+    </div>
+    <div class="col-sm-2 col-lg-2 " >
+        <label>Device</label><br>
+        <select class="btn btn-primary select2" md-select [ngModel]="TravelerSearch.Device?.mantisDevice?.id" (ngModelChange)="onDevChange($event)" style="width:100px" >
+            <option md-option *ngFor="let v of devicesList" [ngValue]="v?.mantisDevice.id">{{v?.name}}</option>
+        </select>
+    </div>
+
+    <div class="col-sm-2 col-lg-2 " >
+        <label>lot</label><br>
+        <select class="btn btn-primary select3" md-select [ngModel]="TravelerSearch.Lot?.mantisLot.id" (ngModelChange)="onLotChange($event)" style="width:100px" >
+            <option md-option  *ngFor="let v of lotsList" [ngValue]="v?.mantisLot.id">{{v?.name}}</option>
+        </select>
+    </div>
+    <div class="col-sm-2 col-lg-2 " >
+        <label>Assembly Location</label><br>
+        <select class="btn btn-primary select3" md-select [ngModel]="TravelerSearch.AssemblyLocation?.id" (ngModelChange)="onAssemblyLocationChange($event)" style="width:100px" >
+            <option md-option  *ngFor="let v of assemblylocationList" [ngValue]="v?.id">{{v?.name}}</option>
+        </select>
+    </div>
+    <div class="col-sm-2 col-lg-2 " >
+        <label>Stress Location</label><br>
+        <select class="btn btn-primary select3" md-select [ngModel]="TravelerSearch.StressLocation?.id" (ngModelChange)="onStressLocationChange($event)" style="width:100px" >
+            <option md-option  *ngFor="let v of StressLocationList" [ngValue]="v?.id">{{v?.name}}</option>
+        </select>
+    </div>
+    <div class=" col-sm-2 col-lg-2 ">
+        <label>Box</label><br>
+        <input  [(ngModel)]="TravelerSearch.Box">
+    </div>
+    <div class=" col-sm-2 col-lg-2 ">
+        <label>Task Number</label><br>
+        <input  [(ngModel)]="TravelerSearch.TaskNumber">
+    </div>
+    <div class=" col-sm-2 col-lg-2 ">
+        <label>Vendor Job</label><br>
+        <input  [(ngModel)]="TravelerSearch.VendorJobNumber">
+    </div>
+    <button class="button button1"  (click)="onSearch()">search</button>
+</div>
+<br>
+<br>
+
+
+
+
+
+
+    <marvell-grid
         [columns]="columns"
         [rows]="travelerobjects"
         [showDeleteButton]="true"

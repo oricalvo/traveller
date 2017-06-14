@@ -314,6 +314,8 @@ export interface TravelerTestProgramPK{
     readonly testProgramId:number;
 }
 
+
+
 export interface TravelerTestProgram{
     readonly testProgram: TestProgram;
     readonly id:  number;
@@ -338,6 +340,19 @@ export interface TemporaryIDsState{
 
 }
 
+export interface TravelerSearch {
+
+    NickName:NickName;
+    Device:Device;
+    Lot:Lot;
+    AssemblyLocation:Location;
+     StressLocation:Location;
+    VendorJobNumber:number;
+    Box:number;
+    TaskNumber:number;
+
+
+}
 
 
 export interface AppState {

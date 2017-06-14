@@ -134,6 +134,7 @@ import {FilterDevice} from "./Filters/FilterDevices";
 
 import {AdminMenuComponent} from "./Menus/AdminMenu";
 import {MenusHomeComponent} from "./Menus/home.component";
+import {MdInputContainer, MdOption} from '@angular/material';
 
 require("node_modules/@angular/material/core/theming/prebuilt/indigo-pink.css!css");
 
@@ -171,6 +172,7 @@ const webApis = [
         RouterModule.forRoot(routes),
         MaterialModule.forRoot(),
         FormsModule,
+
     ],
     declarations: [
         AppComponent,
