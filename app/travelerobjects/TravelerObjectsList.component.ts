@@ -23,8 +23,11 @@ import {VendorsService} from "../services/vendors.service";
 import {FabricatorsService} from "../services/fabricators.service";
 import {actions as deviceActions, deviceActionTypes} from "../reducers/devices";
 import {actions as lotActions} from "../reducers/lots";
-import {actions as NickNameActions} from "../reducers/nicknames";
+import {actions as NickNameActions, nicknameActionTypes} from "../reducers/nicknames";
+import {actions as LocationActions} from "../reducers/locations"
 import {FormControl} from "@angular/forms";
+import {MdDialog, MdDialogRef} from '@angular/material';
+import {LoadingComponent} from "../components/Loading.component";
 
 @Component({
     selector: 'travelerobjects-list',
@@ -42,30 +45,37 @@ export class TravelerObjectsListComponent {
     lotsList?:Lot[];
     assemblylocationList:Location[];
     StressLocationList:Location[];
+    Loading:Boolean;
 
 
 
 
 
-    constructor(private travelerobjectsService: TravelerObjectsService,private TravelerObjectsService:TravelerObjectsService,private StressTestService:StressTestService,private appStore: AppStore,private vendorsService: VendorsService,private fabricatorservice:FabricatorsService,
+    constructor(public dialog: MdDialog,private travelerobjectsService: TravelerObjectsService,private TravelerObjectsService:TravelerObjectsService,private StressTestService:StressTestService,private appStore: AppStore,private vendorsService: VendorsService,private fabricatorservice:FabricatorsService,
                 private LocationsService:LocationsService,   private  PackagesService:PackagesService,private TechnologysService:TechnologysService,private NickNameService:NickNamesService,private DeviceService:DevicesService ,private LotService:LotsService , private BinService:BinsService,private TestProgramsService:TestProgramsService,private TestProgramTravelersService:TestProgramTravelersService,
 
                 private route: ActivatedRoute,
-                private router: Router){
+                private router: Router)
+    {
 
 
 
-
-        this.TravelerSearch=Object.assign({},this.TravelerSearch,{AssemblyLocation:null,Box:0,Device:null,Lot:null,NickName:null,StressLocation:null,TaskNumber:0,VendorJobNumber:0});
-
+        this.Loading=false;
+        //this.TravelerSearch=Object.assign({},this.TravelerSearch,{AssemblyLocation:null,Box:"",Device:null,Lot:null,NickName:null,StressLocation:null,TaskNumber:0,VendorJobNumber:0});
+        this.FieldsReset();
         this.NickNameService.loadAll();
-      //  this.DeviceService.loadAll();
-       // this.LotService.loadAll();
+        //  this.DeviceService.loadAll();
+        // this.LotService.loadAll();
         this.LocationsService.getLocationsByLocationTypeID(1);
         this.LocationsService.getLocationsByLocationTypeID(3);
         this.LocationsService.getLocationsByLocationTypeID(2);
         this.travelerobjectsService.loadAll();
         appStore.subscribe(()=> {
+            if(this.Loading==true)
+            {
+                this.Loading=false;
+                this.dialog.closeAll();
+            }
 
             this.nicknamesList = this.appStore.state.nicknames.data;
             this.assemblylocationList = this.appStore.state.locations.assemblyLocations;
@@ -79,10 +89,11 @@ export class TravelerObjectsListComponent {
             this.TravelerSearch.StressLocation = this.appStore.state.locations.selectedstressLocation;
         });
         this.columns = [
-               {title:"ID",field:"id"},
-               {title:"Name",field:"name"},
-           // {title:"QTYIN",field:"qtyIn"},
-          //  {title:"STRESSDURATION",field:"stressDuration"},
+            {title:"ID",field:"id"},
+            {title:"Name",field:"name"},
+            {title:"Device",field:"travdevice.id"}
+            // {title:"QTYIN",field:"qtyIn"},
+            //  {title:"STRESSDURATION",field:"stressDuration"},
             // {title:"STRESSCYCLEIN",field:"stressCycleIn"},
             // {title:"STRESSDATEIN",field:"stressDateIn"},
             // {title:"STRESSDATEOUT",field:"stressDateOut"},
@@ -164,6 +175,30 @@ export class TravelerObjectsListComponent {
 
     }
     private onSearch(){
+    this.Loading=true;
+        this.dialog.open(LoadingComponent, {
+            height: '400px',
+            width: '600px',
+        });
     this.travelerobjectsService.TravelerSearch(this.TravelerSearch);
+
+
     }
+    private onFieldsReset(){
+        this.FieldsReset();
+    }
+
+    FieldsReset(){
+        this.TravelerSearch=Object.assign({},this.TravelerSearch,{AssemblyLocation:null,Box:"",Device:null,Lot:null,NickName:null,StressLocation:null,TaskNumber:0,VendorJobNumber:0});
+        this.appStore.dispatch(NickNameActions.selectNickName(null));
+        this.appStore.dispatch(deviceActions.selectDevice(null));
+        this.appStore.dispatch(deviceActions.loadDevices(null));
+        this.appStore.dispatch(lotActions.selectLot(null));
+        this.appStore.dispatch(lotActions.loadLots(null));
+        this.appStore.dispatch(LocationActions.selectAssemblyLocation(null));
+        this.appStore.dispatch(LocationActions.selectStressLocation(null));
+
+
+    }
+
 }

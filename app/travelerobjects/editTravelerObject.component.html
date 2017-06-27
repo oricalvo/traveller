@@ -38,14 +38,7 @@
                 <ul class="TestProgramUL">
                     <li>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Selected Bin  &nbsp; &nbsp; TestProgram  </li>
                     <li   *ngFor="let v of TravelerTestPrograms; let i = index">
-
-                        <!--
-                                                <md-checkbox [indeterminate]=false [name]="v.id" [checked]=v.selected (change)="onTestProgramTravelerSelectChange(i)">{{v.selected}}</md-checkbox>
-                                               <input [(ngModel)]="v.selected" (ngModelChange)="onTestProgramTravelerSelectChange(i)" type="checkbox"/>
-
-                                                <button class="button button1"  (click)="onSave()"><img src="/app/travelerobjects/Icons/newspaper.png" height="32" width="32"/></button>
-                        <button (click)="onTestProgramTravelerSelectChange(i) " ><img src='{{v.selected?"/app/travelerobjects/Icons/Chk.png":"/app/travelerobjects/Icons/UnChk.png"}}' height="32" width="32"/></button>-->
-                        <button (click)="onTestProgramTravelerSelectChange(i) "style="width:32px;height:32px;color: black" >{{v.selected?"\u2713":"\u00A0"}}</button>
+                       <button (click)="onTestProgramTravelerSelectChange(i) "style="width:32px;height:32px;color: black" >{{v.selected?"\u2713":"\u00A0"}}</button>
                         <select class="btn btn-info" [ngModel]="v.expectedBin?.id" (ngModelChange)="onBinChange($event,i)" style="width:100px" >
                             <option *ngFor="let t of binList" [ngValue]="t?.id">{{t?.name}}</option>
                         </select>
@@ -76,7 +69,7 @@
 <label>Test Programs List</label> &nbsp;
 <ul class="TPTList">
     <li   *ngFor="let v of TravelerObject?.travelerTestPrograms; let i = index">
-        {{v.testProgram.testProgramName}}
+        {{v.testProgram?.testProgramName}}
     </li>
 </ul>
 
@@ -117,6 +110,12 @@
 <hr>
 <div class="row">
     <div class="fabricator col-sm-2 col-lg-2 ">
+        <label>Stress location</label><br>
+        <select class="btn btn-primary" [ngModel]="stressLocationSelected?.id" (ngModelChange)="onStressLocationChange($event)" style="width:100px" >
+            <option *ngFor="let v of stresslocationList" [ngValue]="v?.id">{{v?.name}}</option>
+        </select>
+    </div>
+    <div class="fabricator col-sm-2 col-lg-2 ">
         <label>Stress</label><br>
         <select class="btn btn-primary" [ngModel]="FabricatorSelected?.id" (ngModelChange)="onChangeObj($event)" style="width:100px" >
             <option *ngFor="let v of fabricatorList" [ngValue]="v?.id">{{v?.name}}</option>
@@ -149,7 +148,7 @@
 
             <li  *ngFor="let stresstest of StressTests, let z=index">
                 <div style="float:left ;width: 90%">
-                <StressTest class="StressTest" [stresstest]=stresstest (DeleteDebugData)="DeleteDebugdata($event)" (EmitAction)="EmitActions($event)"></StressTest>
+                <StressTest class="StressTest" [travelerTestPrograms]=TravelerObject?.travelerTestPrograms [stresstest]=stresstest (DeleteDebugData)="DeleteDebugdata($event)" (EmitAction)="EmitActions($event)"></StressTest>
                 </div>
                 <div style="float:right;margin-top: 100px">
                     <md-icon class="StressDeleteIcon"(click)="onStressTestDelete(stresstest.id)">delete</md-icon>

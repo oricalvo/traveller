@@ -62,6 +62,7 @@ export class EditTravelerObjectComponent implements OnInit {
     fabricatorList:Fabricator[];
     assemblylocationList:Location[];
     testlocationList:Location[];
+    stresslocationList:Location[];
     lotsList?:Lot[];
     binList:Bin[];
     nicknamesList?:NickName[];
@@ -74,6 +75,7 @@ export class EditTravelerObjectComponent implements OnInit {
     TechnologySelected:Technology;
     assemblyLocationSelected:Location;
     testLocationSelected:Location;
+    stressLocationSelected:Location;
 
     assemblyLocation:Location;
     TravelerLot:Lot;
@@ -133,6 +135,7 @@ export class EditTravelerObjectComponent implements OnInit {
             this.fabricatorList=this.appStore.state.fabricators.data;
             this.assemblylocationList=this.appStore.state.locations.assemblyLocations;
             this.testlocationList=this.appStore.state.locations.testLocations;
+            this.stresslocationList=this.appStore.state.locations.stressLocations;
             this.devicesList=this.appStore.state.devices.data;
             this.lotsList=this.appStore.state.lots.data;
             this.binList=this.appStore.state.bins.data;
@@ -140,6 +143,7 @@ export class EditTravelerObjectComponent implements OnInit {
             this.LotSelected=this.appStore.state.lots.selected;
             this.NickNameSelected=this.appStore.state.nicknames.selected;
             this.assemblyLocationSelected=this.appStore.state.locations.selectedassemblyLocation;
+            this.stressLocationSelected=this.appStore.state.locations.selectedstressLocation;
 
             //TravelerTP for change
             if (this.appStore.state.testprogramtravelers.data!=null)
@@ -180,10 +184,14 @@ export class EditTravelerObjectComponent implements OnInit {
         this.fabricatorservice.select(this.TravelerObject.travdevice.technology.fabricator.id)
         this.PackagesService.select(this.TravelerObject.travdevice.devicePackage.id)
         this.LocationsService.selectAssemblylocation(this.TravelerObject.assemblyLocation.id)
+        if(this.TravelerObject.stressTests.length!=0) {
+            this.LocationsService.selectStresslocation(this.TravelerObject.stressTests[0].stressLocation.id)
+        }
         this.FabricatorSelected = this.TravelerObject.travdevice.technology.fabricator;
         this.TechnologySelected = this.TravelerObject.travdevice.technology;
         this.PackageSelected = this.TravelerObject.travdevice.devicePackage;
-        this.assemblyLocationSelected= this.TravelerObject.assemblyLocation;this.id=this.TravelerObject.id;
+        this.assemblyLocationSelected= this.TravelerObject.assemblyLocation;
+        this.id=this.TravelerObject.id;
         this.name =this.TravelerObject.name;
         this.totalDuration=this.TravelerObject.totalDuration;
         this.jedecLevel=this.TravelerObject.jedecLevel;
@@ -193,6 +201,7 @@ export class EditTravelerObjectComponent implements OnInit {
         this.updatedDate=this.TravelerObject.updatedDate
         this.updatedbyUser=this.TravelerObject.updatedbyUser
         this.assemblyLocation=this.TravelerObject.assemblyLocation;
+
         this.travdevice=this.TravelerObject.travdevice;
         this.TravelerLot = this.TravelerObject.travlot;
         this.technology=this.travdevice.technology;
@@ -285,6 +294,7 @@ export class EditTravelerObjectComponent implements OnInit {
         this.fabricatorservice.loadAll();
         this.PackagesService.loadAll();
         this.LocationsService.getLocationsByLocationTypeID(1)
+        this.LocationsService.getLocationsByLocationTypeID(2)
         this.LocationsService.getLocationsByLocationTypeID(3)
     }
     private onSave(){
@@ -430,7 +440,11 @@ export class EditTravelerObjectComponent implements OnInit {
 
 
     }
+    private onStressLocationChange(obj){
+        this.LocationsService.selectStresslocation(obj);
 
+
+    }
 
     private onFabricatorChange(obj){
         this.appStore.dispatch(TechnologyActions.selectTechnology(null));
@@ -443,7 +457,11 @@ export class EditTravelerObjectComponent implements OnInit {
 
     }
     onStressTestAdd() {
-
+        if(this.stressLocationSelected==null)
+        {
+            alert("Please select Stress Location");
+            return;
+        }
           this.appStore.dispatch(TemporaryIDActions.getStresstestTemporaryID());
         this.appStore.dispatch(TemporaryIDActions.getVendorJobTemporaryID());
           let StressTestTempId =this.appStore.state.temporaryIDs.StressTestTemporaryID;
@@ -451,8 +469,10 @@ export class EditTravelerObjectComponent implements OnInit {
         let vendorJob={approvalDate:"",comments:"",dtUpdated:"",id:VendorJobTempId ,invoiceNum:"",jobNum:"",vendor:null}
           this.StressTests.push({id: StressTestTempId ,qtyIn:0,stressDuration:0,stressCycleIn:0,stressDateIn:"",stressDateOut:"",stressReject:0,stressQtyOut:0,
             testQtyIn:0,testDuration:0,testDateIn:"",testDateOut:"",testRejects:0,testQtyOut:0,clips:"",
-              reballingNumber:0,faNumber:"",box:"",zone:"",faDiscription:"",updatedByPersonId:0,comments:"",updateDate:"",debugData:[],taskData:[],vendorJob:vendorJob});
-           this.appStore.dispatch(TravelerObjectActions.add_stress_test_to_traveler_object(StressTestTempId));
+              reballingNumber:0,faNumber:"",box:"",zone:"",faDiscription:"",updatedByPersonId:0,comments:"",updateDate:"",debugData:[],taskData:[],vendorJob:vendorJob, stressLocation:this.stressLocationSelected});
+           let id=StressTestTempId;
+           let StressLocation=this.stressLocationSelected;
+           this.appStore.dispatch(TravelerObjectActions.add_stress_test_to_traveler_object({id,StressLocation}));
      }
     onStressTestDelete(id) {
         alert(id);

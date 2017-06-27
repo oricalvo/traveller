@@ -232,6 +232,7 @@ export interface StressTest{
     readonly debugData: DebugData[];
     readonly taskData: TaskData[];
     readonly vendorJob:vendorJob;
+    readonly stressLocation:Location;
 
 }
 
@@ -348,7 +349,7 @@ export interface TravelerSearch {
     AssemblyLocation:Location;
      StressLocation:Location;
     VendorJobNumber:number;
-    Box:number;
+    Box:string;
     TaskNumber:number;
 
 

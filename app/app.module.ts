@@ -135,6 +135,7 @@ import {FilterDevice} from "./Filters/FilterDevices";
 import {AdminMenuComponent} from "./Menus/AdminMenu";
 import {MenusHomeComponent} from "./Menus/home.component";
 import {MdInputContainer, MdOption} from '@angular/material';
+import {LoadingComponent} from "./components/Loading.component"
 
 require("node_modules/@angular/material/core/theming/prebuilt/indigo-pink.css!css");
 
@@ -166,6 +167,7 @@ const webApis = [
 ];
 
 @NgModule({
+    entryComponents: [LoadingComponent],
     imports: [
         BrowserModule,
         HttpModule,
@@ -244,6 +246,8 @@ const webApis = [
         TravelerObjectsNavComponent,
         TravelerObjectsListComponent,
         EditTravelerObjectComponent,
+
+        LoadingComponent,
     ],
     providers: [
         AppStore,

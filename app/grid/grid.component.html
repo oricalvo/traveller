@@ -3,8 +3,8 @@
         <tr>
             <th (click)="toggleColumn(column)" *ngFor="let column of columns">
                 {{column.title}}
-                <span *ngIf="column == sortedColumn && sortOrder == 'asc'">&uarr;</span>
-                <span *ngIf="column == sortedColumn && sortOrder == 'desc'">&darr;</span>
+                <span *ngIf="column == sortedColumn && sortOrder == 'asc'">{{"\u25B2"}}</span>
+                <span *ngIf="column == sortedColumn && sortOrder == 'desc'">{{"\u25BC"}}</span>
             </th>
             <th *ngIf="hasIconColumn">
                 Preview
