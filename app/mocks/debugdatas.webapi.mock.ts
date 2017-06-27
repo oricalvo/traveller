@@ -6,7 +6,8 @@ import {DebugData} from "../reducers/AppState";
 
 const debugdatas: DebugData[] = require("./debugdatas.json");
 
-export class debugdatasWebApiMock implements IDebugDataWebApi {
+export class debugdatasWebApiMock  {
+
     getDebugDatas(): Promise<DebugData[]> {
         return Promise.resolve().then(() => {
             console.log(debugdatas);

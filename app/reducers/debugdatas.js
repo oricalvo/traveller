@@ -4,14 +4,11 @@
  */
 var _ = require("lodash");
 var AppState_1 = require("./AppState");
-var images_1 = require("./images");
 exports.debugdataActionTypes = {
     LOAD_DEBUGDATAS: "LOAD_DEBUGDATAS",
-    SELECT_DEBUGDATA: "SELECT_DEBUGDATA",
 };
 exports.initialState = {
     data: null,
-    selected: null,
 };
 exports.actions = {
     loadDebugDatas: function (debugdatas) {
@@ -20,32 +17,11 @@ exports.actions = {
             debugdatas: debugdatas,
         };
     },
-    selectDebugData: function (debugData) {
-        return {
-            type: exports.debugdataActionTypes.SELECT_DEBUGDATA,
-            debugData: debugData,
-        };
-    },
 };
 function reducer(state, action) {
     if (state === void 0) { state = exports.initialState; }
     if (action.type == exports.debugdataActionTypes.LOAD_DEBUGDATAS) {
         return Object.assign({}, state, { data: action.debugdatas });
-    }
-    else if (action.type == exports.debugdataActionTypes.SELECT_DEBUGDATA) {
-        return Object.assign({}, state, { selected: action.debugData });
-    }
-    else if (action.type == images_1.imageActionTypes.DELETE_IMAGE) {
-        var debugData = state.selected;
-        if (debugData) {
-            var index = debugData.images.findIndex(function (i) { return i.id == action.id; });
-            if (index != -1) {
-                var imagesClone = debugData.images.concat([]);
-                imagesClone.splice(index, 1);
-                var debugDataClone = Object.assign({}, debugData, { images: imagesClone });
-                return Object.assign({}, state, { selected: debugData });
-            }
-        }
     }
     return state;
 }

@@ -6,7 +6,6 @@ var _ = require("lodash");
 var AppState_1 = require("./AppState");
 exports.imageActionTypes = {
     LOAD_IMAGES: "LOAD_IMAGES",
-    DELETE_IMAGE: "DELETE_IMAGE",
 };
 exports.initialState = {
     data: null,
@@ -18,27 +17,11 @@ exports.actions = {
             images: images,
         };
     },
-    deleteImage: function (id) {
-        return {
-            type: exports.imageActionTypes.DELETE_IMAGE,
-            id: id,
-        };
-    },
 };
 function reducer(state, action) {
     if (state === void 0) { state = exports.initialState; }
     if (action.type == exports.imageActionTypes.LOAD_IMAGES) {
         return Object.assign({}, state, { data: action.images });
-    }
-    else if (action.type == exports.imageActionTypes.DELETE_IMAGE) {
-        if (state.data) {
-            var index = state.data.findIndex(function (i) { return i.id == action.id; });
-            if (index != -1) {
-                var images = state.data.concat([]);
-                images.splice(index, 1);
-                return Object.assign({}, state, { data: images });
-            }
-        }
     }
     return state;
 }

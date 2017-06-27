@@ -12,7 +12,7 @@ import {Injectable} from "@angular/core";
 export interface IDebugDataWebApi {
     getDebugDatas(): Promise<DebugData[]>;
     getDebugData(id: number): Promise<DebugData>;
-    getDebugDataByDesc(desc: string): Promise<DebugData>;
+   getDebugDataByDesc(desc: string): Promise<DebugData>;
 }
 
 @Injectable()

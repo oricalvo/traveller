@@ -23,8 +23,8 @@ export class DebugDatasService {
     }
 
     select(id: number) {
-        this.debugdatasWebApi.getDebugData(id).then(debugData => {
-            this.appStore.dispatch(actions.selectDebugData(debugData));
+       this.debugdatasWebApi.getDebugData(id).then(debugData => {
+      //      this.appStore.dispatch(actions.selectDebugData(debugData));
         });
     }
 
