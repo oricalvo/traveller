@@ -38,11 +38,11 @@ import {ShowImageComponent} from "./images/showImage.component";
 
 import {DebugDatasHomeComponent} from "./Debugdatas/home.component";
 import {DebugDatasNavComponent} from "./Debugdatas/nav.component";
-import {DebugDatasListComponent} from "./Debugdatas/DebugDatasList.component";
+
 import {DebugDatasService} from "./services/DebugDatas.service";
 import {debugdatasWebApiMock} from "./mocks/debugdatas.webapi.mock";
 import {DebugDataComponent} from "./Debugdatas/DebugData.component"
-import {EditDebugDataComponent} from "./Debugdatas/editDebugData.component";
+
 
 import {ImageComponent} from "./images/TravelerImage.component";
 
@@ -232,8 +232,7 @@ const webApis = [
 
         DebugDatasHomeComponent,
         DebugDatasNavComponent,
-        DebugDatasListComponent,
-        EditDebugDataComponent,
+
         DebugDataComponent,
 
         StressTestHomeComponent,

@@ -33,7 +33,7 @@ export class AppStore {
     store: Store<AppState>;
 
     constructor() {
-        const initialState: AppState = {
+        const initialState: AppState =   {
             user: {
                 userName: null,
                 role: null,

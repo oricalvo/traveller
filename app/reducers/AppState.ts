@@ -198,7 +198,7 @@ export interface DebugData{
 
 export interface DebugDataState{
     readonly data: DebugData[];
-    readonly selected: DebugData;
+   // readonly selected: DebugData;
 }
 
 export enum DebugDataSortBy {

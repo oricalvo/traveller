@@ -6,8 +6,7 @@ import {AdminComponent} from "./admin/admin.component";
 import {EditDeviceComponent} from "./devices/editDevice.component";
 
 import {DebugDatasHomeComponent} from "./Debugdatas/home.component";
-import {DebugDatasListComponent} from "./Debugdatas/DebugDatasList.component";
-import {EditDebugDataComponent} from "./Debugdatas/editDebugData.component";
+
 import {DebugDataComponent} from "./Debugdatas/DebugData.component";
 
 import {StressTestHomeComponent} from "./StressTests/home.component";
@@ -145,15 +144,7 @@ export const routes = [
         ]
 
     },
-    {
-        path: 'debugdatas',
-        component: DebugDatasHomeComponent,
-        children: [
-            { path: '', component: DebugDatasListComponent },
-            { path: 'edit/:id', component: EditDebugDataComponent },
-            { path: 'editTest/:id', component: DebugDataComponent },
-        ]
-    },
+
     {
         path: 'stresstests',
         component: StressTestHomeComponent,

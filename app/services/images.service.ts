@@ -19,11 +19,7 @@ export class ImagesService {
         });
     }
 
-    deleteImage(id: number) {
-        this.imagesWebApi.deleteImage(id).then(() => {
-            this.appStore.dispatch(actions.deleteImage(id));
-        });
-    }
+
     uploadfile(file:File[],object:any)
     {
         this.imagesWebApi.uploadImage(file,object);
