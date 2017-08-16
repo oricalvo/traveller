@@ -1,82 +1,58 @@
-import {DevicesHomeComponent} from "./devices/home.component";
-import {AppComponent} from "./layout/app.component";
-import {NullComponent} from "./components/null.component";
-import {DevicesListComponent} from "./devices/devicesList.component";
-import {AdminComponent} from "./admin/admin.component";
-import {EditDeviceComponent} from "./devices/editDevice.component";
+import {DevicesHomeComponent} from "./Device/home.component";
+import {NullComponent} from "./Components/null.component";
+import {DevicesListComponent} from "./Device/DevicesList.component";
+import {AdminComponent} from "./Admin/Admin.component";
 
-import {DebugDatasHomeComponent} from "./Debugdatas/home.component";
+import {TravelerObjectHomeComponent} from "./TravelerObject/home.component";
+import {TravelerObjectsListComponent} from "./TravelerObject/TravelerObjectsList.component";
+import {EditTravelerObjectComponent} from "./TravelerObject/EditTravelerObject.component";
+import {VendorHomeComponent} from "./Vendor/home.component";
+import {VendorsListComponent} from "./Vendor/vendorsList.component";
+import {VendorjobsHomeComponent} from "./VendorJob/home.component";
+import {VendorjobsListComponent} from "./VendorJob/vendorjobsList.component";
+import {FabricatorHomeComponent} from "./Fabricator/home.component";
+import {FabricatorsListComponent} from "./Fabricator/FabricatorsList.component";
 
-import {DebugDataComponent} from "./Debugdatas/DebugData.component";
+import {TechnologyHomeComponent} from "./Technology/home.component";
+import {TechnologysListComponent} from "./Technology/TechnologiesList.component";
 
-import {StressTestHomeComponent} from "./StressTests/home.component";
-import {StressTestsListComponent} from "./StressTests/StressTestsList.component";
-import {EditStressTestComponent} from "./StressTests/editStressTest.component";
+import {PackageHomeComponent} from "./Package/home.component";
+import {PackagesListComponent} from "./Package/PackagesList.component";
 
-import {TravelerObjectHomeComponent} from "./travelerobjects/home.component";
-import {TravelerObjectsListComponent} from "./travelerobjects/TravelerObjectsList.component";
-import {EditTravelerObjectComponent} from "./travelerobjects/editTravelerObject.component";
-//import {ShowImageComponent} from "./travelerobjects/showImage.component";
+import {StressHomeComponent} from "./Stress/home.component";
+import {StressesListComponent} from "./Stress/StressesList.component";
 
-import {ImagesHomeComponent} from "./images/home.component";
-import {ImagesListComponent} from "./images/imagesList.component";
-import {EditImageComponent} from "./images/editImage.component";
-import {ShowImageComponent} from "./images/showImage.component";
 
-import {VendorHomeComponent} from "./vendors/home.component";
-import {VendorsListComponent} from "./vendors/vendorsList.component";
 
-import {VendorjobsHomeComponent} from "./vendorjobs/home.component";
-import {VendorjobsListComponent} from "./vendorjobs/vendorjobsList.component";
-
-import {FabricatorHomeComponent} from "./fabricators/home.component";
-import {FabricatorsListComponent} from "./fabricators/fabricatorsList.component";
-
-import {TechnologyHomeComponent} from "./technologys/home.component";
-import {TechnologysListComponent} from "./technologys/technologysList.component";
-import {EditTechnologyComponent} from "./technologys/editTechnology.component";
-
-import {PackageHomeComponent} from "./packages/home.component";
-import {PackagesListComponent} from "./packages/packagesList.component";
-import {EditPackageComponent} from "./packages/editPackage.component";
-
-import {BinHomeComponent} from "./bins/home.component";
-import {BinsListComponent} from "./bins/binsList.component"
-import {EditBinComponent} from "./bins/editBin.component";
+import {BinHomeComponent} from "./Bin/home.component";
+import {BinsListComponent} from "./Bin/BinsList.component"
 
 import {AdminMenuComponent} from "./Menus/AdminMenu";
 import {MenusHomeComponent} from "./Menus/home.component";
+import {TC_StressHomeComponent} from "./TC_Stress/home.component";
+import {TC_StressesListComponent} from "./TC_Stress/TC_StressesList.component";
 
 export const routes = [
     { path: '', component: NullComponent },
     {
-        path: 'devices',
+        path: 'Devices',
         component: DevicesHomeComponent,
         children: [
             { path: '', component: DevicesListComponent },
-            { path: 'edit/:id', component: EditDeviceComponent },
+
         ]
     },
     {
-        path: 'menus',
+        path: 'Menus',
         component: MenusHomeComponent,
         children: [
-            { path: 'admin', component: AdminMenuComponent },
+            { path: 'Admin', component: AdminMenuComponent },
 
         ]
     },
-    {
-        path: 'images',
-        component: ImagesHomeComponent,
-        children: [
-            { path: '', component: ImagesListComponent },
-            { path: 'edit/:id', component: EditImageComponent },
-            { path: 'show/:id', component: ShowImageComponent },
-        ]
 
-    },
     {
-        path: 'travelerobjects',
+        path: 'TravelerObject',
         component: TravelerObjectHomeComponent,
         children: [
             { path: '', component: TravelerObjectsListComponent },
@@ -86,27 +62,43 @@ export const routes = [
 
     },
     {
-        path: 'vendors',
+        path: 'Vendors',
         component: VendorHomeComponent,
         children: [
             { path: '', component: VendorsListComponent },
-            { path: 'edit/:id', component: EditImageComponent },
-            { path: 'show/:id', component: ShowImageComponent },
+
         ]
 
     },
     {
-        path: 'vendorjobs',
+        path: 'Stresses',
+        component: StressHomeComponent,
+        children: [
+            { path: '', component: StressesListComponent },
+
+        ]
+
+    },
+    {
+        path: 'TC_Stresses',
+        component: TC_StressHomeComponent,
+        children: [
+            { path: '', component: TC_StressesListComponent },
+
+        ]
+
+    },
+    {
+        path: 'VendorJobs',
         component: VendorjobsHomeComponent,
         children: [
             { path: '', component: VendorjobsListComponent },
-            { path: 'edit/:id', component: EditImageComponent },
-            { path: 'show/:id', component: ShowImageComponent },
+
         ]
 
     },
     {
-        path: 'fabricators',
+        path: 'Fabricators',
         component: FabricatorHomeComponent,
         children: [
             { path: '', component: FabricatorsListComponent },
@@ -115,46 +107,39 @@ export const routes = [
 
     },
     {
-        path: 'technologys',
+        path: 'Technologies',
         component: TechnologyHomeComponent,
         children: [
             { path: '', component: TechnologysListComponent},
-            { path: 'edit/:id', component: EditTechnologyComponent},
+
 
         ]
 
     },
     {
-        path: 'packages',
+        path: 'Packages',
         component: PackageHomeComponent,
         children: [
             { path: '', component: PackagesListComponent},
-            { path: 'edit/:id', component: EditPackageComponent},
+
 
         ]
 
     },
     {
-        path: 'bins',
+        path: 'Bins',
         component: BinHomeComponent,
         children: [
             { path: '', component: BinsListComponent},
-            { path: 'edit/:id', component: EditBinComponent},
+
 
         ]
 
     },
 
+
     {
-        path: 'stresstests',
-        component: StressTestHomeComponent,
-        children: [
-            { path: '', component: StressTestsListComponent },
-            { path: 'edit/:id', component: EditStressTestComponent },
-        ]
-    },
-    {
-        path: 'admin',
+        path: 'Admin',
         component: AdminComponent,
     },
 ];

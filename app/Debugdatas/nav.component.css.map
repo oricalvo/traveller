@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,KAAM;EACJ,OAAO,EAAE,IAAI;EACb,KAAK,EAAE,IAAI;;AAGb,EAAG;EACD,UAAU,EAAE,IAAI;EAChB,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,CAAC;EAEV,KAAG;IACD,OAAO,EAAE,OAAO;IAChB,OAAO,EAAE,KAAK",
-"sources": ["nav.component.scss"],
-"names": [],
-"file": "nav.component.css"
-}

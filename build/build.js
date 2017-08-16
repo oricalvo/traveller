@@ -27,7 +27,7 @@ function compileTS() {
 }
 
 function compileSASS() {
-    return buildPromise(gulp.src(['./app/**/*.scss', "./styles/*.scss"]))
+    return buildPromise(gulp.src(['./app/**/*.scss', "./Styles/*.scss"]))
         .pipe(intercept(function(file) {
             gutil.log("    " + file.path);
 

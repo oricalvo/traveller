@@ -1,0 +1,33 @@
+<br><br>
+<div style="float: left">
+
+
+       <!--   <label>TC Stress Name</label><br><input  [(ngModel)]="NewStressName" placeholder="insert new stress name..."> <md-icon class="StressAddIcon" (click)="onStressAdd(NewStressName)">add_box</md-icon>-->
+   </div>
+
+   <div style="clear: both"></div>
+   <br>
+   <hr>
+   <br>
+   <div style="float: left">
+          <!--  <label>Filter</label>  <input [(ngModel)]="searchtxt" placeholder="key word..."/> -->
+      <br><br>
+
+      <ul class="StressList">
+             <label>Name</label><br>
+          <div *ngIf="tc_stresses">
+          {{tc_stresses[0].cycleAverageDuration}}
+              {{tc_stresses[0].ovenCycleCounter}}
+              {{tc_stresses[0].lastUpdateDate}}
+              {{tc_stresses[0].Stress.id}}
+              {{tc_stresses[0].Stress.name}}
+          </div>
+             <li  *ngFor="let TC_Stress of tc_stresses, let z=index">
+                    <div >
+
+                           <input  [(ngModel)]="TC_Stress.Stress.id">
+                         <!--  <md-icon class="StressAddIcon" (click)="onStressSave(Stress)">save</md-icon> -->
+                     </div>
+              </li>
+       </ul>
+</div>

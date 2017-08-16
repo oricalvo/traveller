@@ -1,0 +1,111 @@
+:host {
+
+  background-color: #6c0909;
+  padding: 0.5em;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  position: fixed;
+  z-index: 90;
+  width: 100%;
+
+}
+
+.title {
+  font-size: 5em;
+  display: flex;
+  margin-right: 1em;
+  float:left;
+  text-shadow: rgb(187, 187, 187) 0px 1px 0px,
+  rgb(181, 181, 181) 0px 2px 0px,
+  rgb(172, 172, 172) 0px 3px 0px,
+  rgb(160, 160, 160) 0px 4px 0px,
+  rgb(145, 145, 145) 0px 5px 0px,
+  rgb(127, 127, 127) 0px 6px 0px,
+  rgba(0, 0, 0, 0.199219) 0px 7px 1px,
+  rgba(0, 0, 0, 0.296875) 0px 8px 6px;
+}
+
+
+
+
+body { font: 400 1em/1.5 "Neuton"; background: #090d00; color: rgba(255,255,255,.25); text-align: center; margin: 0 }
+
+
+
+  .title {
+
+    font: 700 5em/1 "Oswald", sans-serif;
+    letter-spacing: 0;
+    padding: .25em 0 .325em;
+    display: block;
+    margin: 0 auto;
+    text-shadow: 0 0 80px rgba(255,255,255,.5);
+
+    /* Clip Background Image */
+
+    background: url(/app/Layout/Icons/animated_text_fill.png) repeat-y;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    /* Animate Background Image */
+
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: aitf 80s linear infinite;
+
+    /* Activate hardware acceleration for smoother animations */
+
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-backface-visibility: hidden;
+
+  }
+
+
+/* Animate Background Image */
+
+@-webkit-keyframes aitf {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+
+
+
+
+
+
+
+
+
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  li {
+    display: inline-block;
+    margin-right: 1em;
+  }
+}
+
+a {
+  color: white;
+}
+.links{
+  float:right;
+  margin-top:1%
+}
+
+.shadowfilter {
+  -webkit-filter: drop-shadow(0px 0px 10px rgba(255, 254, 246, 0.8));
+  -webkit-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+
+}
+.shadowfilter:hover {
+   -webkit-filter: drop-shadow(0px 0px 10px  rgba(128, 64, 48, 0.8));
+ }

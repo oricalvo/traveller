@@ -1,0 +1,25 @@
+<br><br>
+<div style="float: left">
+
+
+       <label>Stress Name</label><br><input  [(ngModel)]="NewStressName" placeholder="insert new stress name..."> <md-icon class="StressAddIcon" (click)="onStressAdd(NewStressName)">add_box</md-icon>
+</div>
+
+<div style="clear: both"></div>
+<br>
+<hr>
+<br>
+<div style="float: left">
+       <label>Filter</label>  <input [(ngModel)]="searchtxt" placeholder="key word..."/>
+       <br><br>
+
+       <ul class="StressList">
+              <label>Name</label><br>
+              <li  *ngFor="let Stress of stresses| searchfilter: 'name' : searchtxt, let z=index">
+                     <div >
+
+                            <input  [(ngModel)]="Stress.name"> <md-icon class="StressAddIcon" (click)="onStressSave(Stress)">save</md-icon>
+                     </div>
+              </li>
+       </ul>
+</div>
